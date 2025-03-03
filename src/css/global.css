@@ -1,0 +1,22 @@
+body {
+  font-family: "Plus Jakarta Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.bg-gradiet {
+  background: linear-gradient(-225deg, #deeaea 0%, #dbdae6 56%, #f1d5d8 100%)
+    no-repeat center center/cover;
+}
+
+.bg-gradient {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 94% -80%,
+      #a3bcf5 0%,
+      rgba(255, 255, 255, 0) 51%
+    ),
+    linear-gradient(342deg, #efaff9 0%, rgba(255, 255, 255, 0) 18%);
+}
