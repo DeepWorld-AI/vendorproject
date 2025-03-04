@@ -1,7 +1,7 @@
 const ZedHistory = () => {
   return (
     <>
-      <div className="zed-history"></div>
+      <div className="zed-history text-sm p-4">Hello from Zed history</div>
     </>
   );
 };

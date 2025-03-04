@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import AgentResponse from "@/pages/agent-response";
 import ContractDashboard from "@/pages/contract dashboard/contract-dashboard";
 import ZedSummary from "@/pages/contract dashboard/chat with zed/zed-summary";
+import ZedHistory from "@/pages/contract dashboard/chat with zed/zed-history";
+import ZedActivity from "@/pages/contract dashboard/chat with zed/zed-activity";
 
 export default function Sidebar() {
   const [isBlurred, setIsBlurred] = useState(false);
@@ -55,6 +57,14 @@ export default function Sidebar() {
             <Route path="/agent-response" element={<AgentResponse />} />
             <Route path="/contract-dashboard" element={<ContractDashboard />}>
               <Route index element={<ZedSummary />} />
+              <Route
+                path="/contract-dashboard/zed-history"
+                element={<ZedHistory />}
+              />
+              <Route
+                path="/contract-dashboard/zed-activity"
+                element={<ZedActivity />}
+              />
             </Route>
           </Routes>
         </div>

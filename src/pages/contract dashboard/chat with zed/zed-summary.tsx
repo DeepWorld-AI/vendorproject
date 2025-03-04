@@ -31,7 +31,7 @@ const ZedSummary = () => {
   }, []);
 
   return (
-    <div className="zed-summary text-sm p-2">
+    <div className="zed-summary text-sm p-4">
       {/* Intro Text */}
       <Fade delay={500} cascade triggerOnce>
         <p>
@@ -80,22 +80,23 @@ const ZedSummary = () => {
 
       {/* Follow-Up Questions (Revealed only when OL is completed) */}
       {isOlRevealed && (
-        <div className="pt-4">
-          <Fade delay={1100} cascade triggerOnce>
+        <Fade delay={1100} cascade triggerOnce>
+          <div className="pt-4">
             <h1 className="font-semibold text-base">
               Follow-Up Questions for SaaS Agreement Review?
             </h1>
-          </Fade>
 
-          {questions.map((qst) => (
-            <Fade key={qst.id} delay={1100} cascade triggerOnce>
-              <ul className="flex justify-between items-center pt-4">
+            {questions.map((qst) => (
+              <ul
+                key={qst.id}
+                className="flex justify-between items-center pt-4"
+              >
                 <li>{qst.qst}</li>
                 <Plus size={16} />
               </ul>
-            </Fade>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Fade>
       )}
     </div>
   );

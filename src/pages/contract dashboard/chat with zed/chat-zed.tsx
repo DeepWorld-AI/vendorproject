@@ -13,7 +13,7 @@ import {
   Sparkles,
   SquarePlus,
 } from "lucide-react";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import {
   Popover,
   PopoverContent,
@@ -47,17 +47,32 @@ const ChatWithZed = () => {
       label: "Auto-generate Contract Drafts",
     },
   ];
+  const navigate = useNavigate();
+
   return (
     <div className="w-full text-sm">
       {/* Header */}
       <div className="border-b p-4 flex justify-between items-center">
         <h1 className="flex items-center gap-2 font-semibold">
-          <Sparkles className="-rotate-90" size={18} /> Ask Zed
+          <Sparkles
+            className="-rotate-90"
+            size={18}
+            onClick={() => navigate("/contract-dashboard")}
+          />{" "}
+          Ask Zed
         </h1>
         <div className="flex items-center gap-x-6 text-gray-500">
-          <History size={18} className="cursor-pointer" />
+          <History
+            size={18}
+            className="cursor-pointer"
+            onClick={() => navigate("/contract-dashboard/zed-history")}
+          />
           <div className="relative">
-            <Bot size={18} className="cursor-pointer" />
+            <Bot
+              size={18}
+              className="cursor-pointer"
+              onClick={() => navigate("/contract-dashboard/zed-activity")}
+            />
             <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-red-500"></div>
           </div>
           <SquarePlus size={18} className="cursor-pointer" />
@@ -104,7 +119,7 @@ const ChatWithZed = () => {
                         <ChevronUp size={16} />
                       </Button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-[300px] p-1">
+                    <PopoverContent className="w-[300px] p-2">
                       {frameworks.map((framework) => (
                         <div
                           key={framework.value}
