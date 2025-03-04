@@ -1,5 +1,5 @@
-import ChatWithZed from "./chat-zed";
-import Dashboard from "./dashboard";
+import ChatWithZed from "./chat with zed/chat-zed";
+import Dashboard from "./ai summary/dashboard";
 
 const ContractDashboard = () => {
   return (

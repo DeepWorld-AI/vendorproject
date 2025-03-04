@@ -5,6 +5,10 @@ body {
   font-style: normal;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .bg-gradiet {
   background: linear-gradient(-225deg, #deeaea 0%, #dbdae6 56%, #f1d5d8 100%)
     no-repeat center center/cover;

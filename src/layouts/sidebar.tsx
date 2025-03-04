@@ -7,6 +7,7 @@ import ContractLibrary from "@/pages/contract-library";
 import { useEffect, useState } from "react";
 import AgentResponse from "@/pages/agent-response";
 import ContractDashboard from "@/pages/contract dashboard/contract-dashboard";
+import ZedSummary from "@/pages/contract dashboard/chat with zed/zed-summary";
 
 export default function Sidebar() {
   const [isBlurred, setIsBlurred] = useState(false);
@@ -52,7 +53,9 @@ export default function Sidebar() {
             <Route path="/" element={<Playground />} />
             <Route path="/contract-library" element={<ContractLibrary />} />
             <Route path="/agent-response" element={<AgentResponse />} />
-            <Route path="/contract-dashboard" element={<ContractDashboard />} />
+            <Route path="/contract-dashboard" element={<ContractDashboard />}>
+              <Route index element={<ZedSummary />} />
+            </Route>
           </Routes>
         </div>
       </SidebarInset>

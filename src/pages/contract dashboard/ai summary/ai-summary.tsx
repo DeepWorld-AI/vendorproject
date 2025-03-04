@@ -17,43 +17,95 @@ import { Fade } from "react-awesome-reveal";
 const AiSummary = () => {
   const data = [
     {
-      title: "Obligations & Milestones",
-      highlight: "4/8 milestones met",
+      title: "Obligations & Operational Markers",
+      highlight: "3 Oligations & 2 Operational",
       metrics: [
-        { label: "Deliverable Approval Rate", value: "100%", isPositive: true },
-        { label: "On-Time Deliverable Rate", value: "92%", isPositive: true },
-        { label: "Overall Satisfaction", value: "98%", isPositive: true },
+        { label: "SLAs & Uptime Guarantees ", value: "30%", isPositive: true },
+        { label: "Incident Response Time", value: "20%", isPositive: true },
+        {
+          label: "Data Access & API Availability",
+          value: "20%",
+          isPositive: true,
+        },
+        {
+          label: "Software Updates & Support",
+          value: "15%",
+          isPositive: true,
+        },
+        {
+          label: "User License Compliance",
+          value: "15%",
+          isPositive: true,
+        },
       ],
     },
     {
-      title: "SLA & Vendor Performance",
-      highlight: "1 non-compliance",
-      metrics: [
-        { label: "SLA Compliance Rate", value: "95%", isPositive: true },
-        { label: "Vendor Response Rate", value: "98%", isPositive: true },
-        { label: "Dispute Rate", value: "nil", isPositive: true },
-      ],
-    },
-    {
-      title: "Financial & Payments",
-      highlight: "1 milestone met",
-      metrics: [
-        { label: "Deliverable Approval Rate", value: "100%", isPositive: true },
-        { label: "On-Time Deliverable Rate", value: "92%", isPositive: true },
-        { label: "Overall Satisfaction", value: "98%", isPositive: true },
-      ],
-    },
-    {
-      title: "Risk & Issues",
+      title: "Behavioral & Negotiation Markers:",
       highlight: "1/3 open",
       metrics: [
-        { label: "Risk Incident Likelihood", value: "25%", isPositive: false },
         {
-          label: "Average Issue Resolution Time",
-          value: "7d",
+          label: "Vendor’s Willingness to Adjust Pricing",
+          value: "25%",
           isPositive: false,
         },
-        { label: "Delays", value: "2", isPositive: false },
+        {
+          label: "Redline Frequency on Key Clauses",
+          value: "20%",
+          isPositive: false,
+        },
+        {
+          label: "Amendment & Renewal Patterns",
+          value: "20%",
+          isPositive: false,
+        },
+        {
+          label: "Penalty Clause Negotiability",
+          value: "15%",
+          isPositive: false,
+        },
+        {
+          label: "Renewal Negotiation Success Rate",
+          value: "20%",
+          isPositive: false,
+        },
+      ],
+    },
+    {
+      title: "Risk Markers",
+      highlight: "1 compliance risk",
+      metrics: [
+        {
+          label: "Data Security & Compliance Risk",
+          value: "30%",
+          isPositive: true,
+        },
+        {
+          label: "Single Vendor Dependency Risk",
+          value: "20%",
+          isPositive: true,
+        },
+        { label: "Termination & Exit Risk", value: "15%", isPositive: true },
+        { label: "Uptime & SLA Risk", value: "20%", isPositive: true },
+        { label: "Liability & Indemnity Risk", value: "15%", isPositive: true },
+      ],
+    },
+    {
+      title: "Financial & Commercial Markers",
+      highlight: "1 milestone met",
+      metrics: [
+        {
+          label: "Pricing Model & Cost Control",
+          value: "25%",
+          isPositive: true,
+        },
+        {
+          label: "Auto-Renewal & Price Escalation",
+          value: "20%",
+          isPositive: true,
+        },
+        { label: "Discounts & Volume Pricing", value: "15%", isPositive: true },
+        { label: "TCO Impact", value: "25%", isPositive: true },
+        { label: "Hidden Fees", value: "15%", isPositive: true },
       ],
     },
   ];
@@ -61,7 +113,7 @@ const AiSummary = () => {
     <>
       <div className="ai-summary text-sm">
         <h1 className="font-semibold text-base">
-          SOW for Deployment & Training of E-Commerce Portal
+          Software as a Service (SaaS) Agreements
         </h1>
 
         <div className="grid grid-cols-2 gap-2 py-4">
