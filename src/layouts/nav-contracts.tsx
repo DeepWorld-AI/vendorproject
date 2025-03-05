@@ -35,7 +35,7 @@ export function NavContracts({
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>ZED</SidebarGroupLabel>
+      <SidebarGroupLabel>Contracts</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => {
           const isActive =
