@@ -41,32 +41,18 @@ export default function Sidebar() {
       ${isBlurred ? "bg-white/60 backdrop-blur-md" : "bg-white"}`}
         >
           <SidebarTrigger className="-ml-1" />
-          {location.pathname === "/" && (
-            <Separator orientation="vertical" className="mr-2 h-4" />
-          )}
-          {location.pathname === "/" && (
-            <p className="text-sm font-medium cursor-pointer">Test Run</p>
-          )}
-          {location.pathname === "/" && (
-            <Separator orientation="vertical" className="mr-2 h-4" />
-          )}
-          {location.pathname === "/" && (
-            <Link
-              to="/"
-              className="text-sm font-medium cursor-pointer text-[#9B8BF4]"
-            >
-              Playground
-            </Link>
-          )}
-          {location.pathname === "/" && (
-            <Separator orientation="vertical" className="mr-2 h-4" />
-          )}
-          {location.pathname === "/" && (
-            <p className="text-sm font-medium cursor-pointer">Live</p>
-          )}
-          {location.pathname === "/" && (
-            <Separator orientation="vertical" className="mr-2 h-4" />
-          )}
+          <Separator orientation="vertical" className="mr-2 h-4" />
+          <p className="text-sm font-medium cursor-pointer">Test Run</p>
+          <Separator orientation="vertical" className="mr-2 h-4" />
+          <Link
+            to="/"
+            className="text-sm font-medium cursor-pointer text-[#9B8BF4]"
+          >
+            Playground
+          </Link>
+          <Separator orientation="vertical" className="mr-2 h-4" />
+          <p className="text-sm font-medium cursor-pointer">Live</p>
+          <Separator orientation="vertical" className="mr-2 h-4" />
         </header>
 
         <div className="flex flex-1 flex-col gap-4">
