@@ -13,23 +13,21 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="border-b">
-        <div className="flex p-3 gap-3">
-          {all_btn.map((btn) => (
-            <Button
-              variant="ghost"
-              className={`h-7 px-8 rounded-full ${
-                active.toLowerCase() === btn.name.toLowerCase()
-                  ? "bg-purple-100 text-purple-600"
-                  : ""
-              }`}
-              key={btn.id}
-              onClick={() => setActive(btn.name)}
-            >
-              {btn.name}
-            </Button>
-          ))}
-        </div>
+      <div className="flex px-2 h-14 items-center gap-3 border-b">
+        {all_btn.map((btn) => (
+          <Button
+            variant="ghost"
+            className={`h-7 px-8 rounded-full ${
+              active.toLowerCase() === btn.name.toLowerCase()
+                ? "bg-purple-100 text-purple-600"
+                : ""
+            }`}
+            key={btn.id}
+            onClick={() => setActive(btn.name)}
+          >
+            {btn.name}
+          </Button>
+        ))}
       </div>
 
       <div className="p-3">

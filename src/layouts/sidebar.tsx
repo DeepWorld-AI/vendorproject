@@ -1,7 +1,11 @@
 import { AppSidebar } from "./app-sidebar";
 import { Link, Route, Routes, useLocation } from "react-router";
 import { Separator } from "@/components/ui/separator";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 import Playground from "@/pages/playground";
 import ContractLibrary from "@/pages/contract-library";
 import { useEffect, useState } from "react";
@@ -36,20 +40,35 @@ export default function Sidebar() {
           className={`flex sticky top-0 h-16 z-50 shrink-0 items-center gap-2 border-b px-4 transition duration-300
       ${isBlurred ? "bg-white/60 backdrop-blur-md" : "bg-white"}`}
         >
-          <p className="text-sm font-medium cursor-pointer">Test Run</p>
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          <Link
-            to="/"
-            className="text-sm font-medium cursor-pointer text-[#9B8BF4]"
-          >
-            Playground
-          </Link>
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          <p className="text-sm font-medium cursor-pointer">Live</p>
-          <Separator orientation="vertical" className="mr-2 h-4" />
+          <SidebarTrigger className="-ml-1" />
+          {location.pathname === "/" && (
+            <Separator orientation="vertical" className="mr-2 h-4" />
+          )}
+          {location.pathname === "/" && (
+            <p className="text-sm font-medium cursor-pointer">Test Run</p>
+          )}
+          {location.pathname === "/" && (
+            <Separator orientation="vertical" className="mr-2 h-4" />
+          )}
+          {location.pathname === "/" && (
+            <Link
+              to="/"
+              className="text-sm font-medium cursor-pointer text-[#9B8BF4]"
+            >
+              Playground
+            </Link>
+          )}
+          {location.pathname === "/" && (
+            <Separator orientation="vertical" className="mr-2 h-4" />
+          )}
+          {location.pathname === "/" && (
+            <p className="text-sm font-medium cursor-pointer">Live</p>
+          )}
+          {location.pathname === "/" && (
+            <Separator orientation="vertical" className="mr-2 h-4" />
+          )}
         </header>
 
-        {/* all the components */}
         <div className="flex flex-1 flex-col gap-4">
           <Routes>
             <Route path="/" element={<Playground />} />

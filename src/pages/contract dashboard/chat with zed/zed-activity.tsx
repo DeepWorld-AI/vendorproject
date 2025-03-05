@@ -11,7 +11,7 @@ import { Fade } from "react-awesome-reveal";
 const ZedActivity = () => {
   return (
     <>
-      <div className="zed-activity text-sm p-4">
+      <div className="zed-activity text-sm px-4">
         <Accordion
           type="single"
           collapsible
@@ -76,15 +76,15 @@ const ZedActivity = () => {
           defaultValue="item-2"
         >
           <AccordionItem value="item-2" className="border-0">
-            <AccordionTrigger>
-              <div className="flex items-center justify-between">
-                <h2 className="text-base font-semibold">
-                  Upcoming items that need attention
-                </h2>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <Fade delay={800} cascade triggerOnce>
+            <Fade delay={1000} cascade triggerOnce>
+              <AccordionTrigger>
+                <div className="flex items-center justify-between">
+                  <h2 className="text-base font-semibold">
+                    Upcoming items that need attention
+                  </h2>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
                 <ul className="space-y-2 text-sm">
                   <li className="text-green-600 flex items-center gap-2">
                     <CircleCheck className="bg-green-600 w-3 h-3 text-white rounded-full" />
@@ -107,8 +107,8 @@ const ZedActivity = () => {
                     <span className="text-gray-600">($50,000 Delayed)</span>
                   </li>
                 </ul>
-              </Fade>
-            </AccordionContent>
+              </AccordionContent>
+            </Fade>
           </AccordionItem>
         </Accordion>
       </div>

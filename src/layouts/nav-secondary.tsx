@@ -1,5 +1,5 @@
 import { ChevronRight, type LucideIcon } from "lucide-react";
-
+import { useLocation, Link } from "react-router";
 import {
   Collapsible,
   CollapsibleContent,
@@ -15,9 +15,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { Link, useLocation } from "react-router";
 
-export function NavMain({
+export function NavSecondary({
   items,
 }: {
   items: {
@@ -35,7 +34,7 @@ export function NavMain({
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>ZED</SidebarGroupLabel>
+      <SidebarGroupLabel>Settings</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => {
           const isActive =
@@ -55,10 +54,8 @@ export function NavMain({
                     tooltip={item.title}
                     className={`font-medium ${isActive ? "bg-gray-200" : ""}`}
                   >
-                    <Link to={item.url} className="flex items-center gap-2">
-                      {item.icon && <item.icon size={16} />}
-                      <span>{item.title}</span>
-                    </Link>
+                    {item.icon && <item.icon />}
+                    <span>{item.title}</span>
                     <ChevronRight
                       className={`ml-auto transition-transform duration-200 ${
                         isActive ? "rotate-90" : ""
@@ -95,10 +92,8 @@ export function NavMain({
                 tooltip={item.title}
                 className={`font-medium ${isActive ? "bg-gray-200" : ""}`}
               >
-                <Link to={item.url} className="flex items-center gap-2">
-                  {item.icon && <item.icon size={16} />}
-                  <span>{item.title}</span>
-                </Link>
+                {item.icon && <item.icon />}
+                <span>{item.title}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           );

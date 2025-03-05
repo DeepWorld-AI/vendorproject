@@ -13,7 +13,7 @@ import {
   Sparkles,
   SquarePlus,
 } from "lucide-react";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useLocation, useNavigate } from "react-router";
 import {
   Popover,
   PopoverContent,
@@ -48,11 +48,12 @@ const ChatWithZed = () => {
     },
   ];
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="w-full text-sm">
       {/* Header */}
-      <div className="border-b p-4 flex justify-between items-center">
+      <div className="border-b h-14 px-2 flex justify-between items-center">
         <h1 className="flex items-center gap-2 font-semibold">
           <Sparkles
             className="-rotate-90"
@@ -61,21 +62,35 @@ const ChatWithZed = () => {
           />{" "}
           Ask Zed
         </h1>
-        <div className="flex items-center gap-x-6 text-gray-500">
-          <History
-            size={18}
-            className="cursor-pointer"
-            onClick={() => navigate("/contract-dashboard/zed-history")}
-          />
-          <div className="relative">
+        <div className="flex items-center gap-x-6 text-gray-500 p-2">
+          <div
+            className={`p-1.5 rounded-md hover:bg-gray-100 cursor-pointer ${
+              location.pathname === "/contract-dashboard/zed-history"
+                ? "bg-gray-100"
+                : ""
+            }`}
+          >
+            <History
+              size={18}
+              onClick={() => navigate("/contract-dashboard/zed-history")}
+            />
+          </div>
+          <div
+            className={`relative p-1.5 rounded-md hover:bg-gray-100 cursor-pointer ${
+              location.pathname === "/contract-dashboard/zed-activity"
+                ? "bg-gray-100"
+                : ""
+            }`}
+          >
             <Bot
               size={18}
-              className="cursor-pointer"
               onClick={() => navigate("/contract-dashboard/zed-activity")}
             />
             <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-red-500"></div>
           </div>
-          <SquarePlus size={18} className="cursor-pointer" />
+          <div className="hover:bg-gray-100 p-1.5 rounded-md">
+            <SquarePlus size={18} className="cursor-pointer" />
+          </div>
         </div>
       </div>
 

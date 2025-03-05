@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Cog, Files, House } from "lucide-react";
+import { Cog, Files, House, ListTodo, Mails } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -8,6 +8,8 @@ import {
 } from "@/components/ui/sidebar";
 import { VersionSwitcher } from "./version-switcher";
 import { NavMain } from "./nav-main";
+import { NavContracts } from "./nav-contracts";
+import { NavSecondary } from "./nav-secondary";
 
 const data = {
   navMain: [
@@ -18,24 +20,49 @@ const data = {
       isActive: true,
     },
     {
-      title: "Contracts",
-      url: "/contracts",
-      icon: Files,
+      title: "Messages",
+      url: "/messages/inbox",
+      icon: Mails,
       items: [
         {
-          title: "contract 1",
-          url: "#",
+          title: "Inbox",
+          url: "/messages/inbox",
         },
         {
-          title: "contract 2",
-          url: "#",
+          title: "Outbox",
+          url: "/messages/outbox",
         },
         {
-          title: "contract 3",
-          url: "#",
+          title: "Archieve",
+          url: "/messages/archieve",
         },
       ],
     },
+    {
+      title: "Tasks",
+      url: "/tasks",
+      icon: ListTodo,
+      isActive: true,
+    },
+  ],
+  contracts: [
+    {
+      name: "Software Service (SaaS) Agreements",
+      url: "/agent-response",
+      icon: Files,
+    },
+    {
+      name: "Software Development Agreements",
+      url: "#",
+      icon: Files,
+    },
+    {
+      name: "Software License Agreements",
+      url: "#",
+      icon: Files,
+    },
+  ],
+  navSecondary: [
     {
       title: "Manage",
       url: "#",
@@ -62,6 +89,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
+        <NavContracts projects={data.contracts} />
+        <NavSecondary items={data.navSecondary} />
       </SidebarContent>
 
       <SidebarRail />
