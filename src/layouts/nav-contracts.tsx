@@ -1,86 +1,108 @@
-import { Folder, MoreHorizontal, Trash2, type LucideIcon } from "lucide-react";
-import { useLocation, Link } from "react-router";
+import { ChevronRight, type LucideIcon } from "lucide-react";
+
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
+import { Link, useLocation } from "react-router";
 
 export function NavContracts({
-  projects,
+  items,
 }: {
-  projects: {
-    name: string;
+  items: {
+    title: string;
     url: string;
-    icon: LucideIcon;
+    icon?: LucideIcon;
+    isActive?: boolean;
+    items?: {
+      title: string;
+      url: string;
+    }[];
   }[];
 }) {
-  const { isMobile } = useSidebar();
   const location = useLocation();
 
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Contracts</SidebarGroupLabel>
+    <SidebarGroup>
+      <SidebarGroupLabel>ZED</SidebarGroupLabel>
       <SidebarMenu>
-        {projects.map((item) => {
-          const isActive = location.pathname === item.url;
+        {items.map((item) => {
+          const isActive =
+            location.pathname === item.url ||
+            item.items?.some((subItem) => location.pathname === subItem.url);
 
-          return (
-            <SidebarMenuItem key={item.name}>
-              <SidebarMenuButton asChild>
-                <Link
-                  to={item.url}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-md ${
-                    isActive ? "bg-gray-200" : ""
-                  }`}
-                >
-                  <item.icon />
-                  <span>{item.name}</span>
+          return item.items && item.items.length > 0 ? (
+            <Collapsible
+              key={item.title}
+              asChild
+              defaultOpen={isActive}
+              className="group/collapsible"
+            >
+              <SidebarMenuItem>
+                <CollapsibleTrigger asChild>
+                  <SidebarMenuButton
+                    tooltip={item.title}
+                    className={`font-medium ${isActive ? "bg-gray-200" : ""}`}
+                  >
+                    <Link to={item.url} className="flex items-center gap-2">
+                      {item.icon && <item.icon size={16} />}
+                      <span>{item.title}</span>
+                    </Link>
+                    <ChevronRight
+                      className={`ml-auto transition-transform duration-200 ${
+                        isActive ? "rotate-90" : ""
+                      }`}
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    {item.items.map((subItem) => {
+                      const isSubActive = location.pathname === subItem.url;
+                      return (
+                        <SidebarMenuSubItem key={subItem.title}>
+                          <SidebarMenuSubButton asChild>
+                            <Link
+                              to={subItem.url}
+                              className={`block px-1 text-xs py-2 truncate ${
+                                isSubActive ? "bg-gray-200" : ""
+                              }`}
+                            >
+                              {subItem.title}
+                            </Link>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      );
+                    })}
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </SidebarMenuItem>
+            </Collapsible>
+          ) : (
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton
+                tooltip={item.title}
+                className={`font-medium ${isActive ? "bg-gray-200" : ""}`}
+              >
+                <Link to={item.url} className="flex items-center gap-2">
+                  {item.icon && <item.icon size={16} />}
+                  <span>{item.title}</span>
                 </Link>
               </SidebarMenuButton>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuAction showOnHover>
-                    <MoreHorizontal />
-                    <span className="sr-only">More</span>
-                  </SidebarMenuAction>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  className="w-48 rounded-lg"
-                  side={isMobile ? "bottom" : "right"}
-                  align={isMobile ? "end" : "start"}
-                >
-                  <DropdownMenuItem>
-                    <Folder className="text-muted-foreground" />
-                    <span>View Contract Detail</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Trash2 className="text-muted-foreground" />
-                    <span>Delete Contract</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
             </SidebarMenuItem>
           );
         })}
-        <SidebarMenuItem>
-          <SidebarMenuButton className="text-sidebar-foreground/70">
-            <MoreHorizontal className="text-sidebar-foreground/70" />
-            <span>More</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>
   );

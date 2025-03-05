@@ -33,7 +33,7 @@ const data = {
           url: "/messages/outbox",
         },
         {
-          title: "Archieve",
+          title: "Archeive",
           url: "/messages/archieve",
         },
       ],
@@ -42,24 +42,79 @@ const data = {
       title: "Tasks",
       url: "/tasks",
       icon: ListTodo,
-      isActive: true,
+      items: [
+        {
+          title: "task",
+          url: "/messages/inbox",
+        },
+        {
+          title: "task",
+          url: "/messages/outbox",
+        },
+        {
+          title: "task",
+          url: "/messages/archieve",
+        },
+      ],
     },
   ],
   contracts: [
     {
-      name: "Software Service (SaaS) Agreements",
-      url: "/agent-response",
-      icon: Files,
-    },
-    {
-      name: "Software Development Agreements",
+      title: "All",
       url: "#",
       icon: Files,
+      items: [
+        {
+          title: "Software Service Agreements",
+          url: "/contract",
+        },
+        {
+          title: "Software Development Agreements",
+          url: "#",
+        },
+        {
+          title: "Software License Agreements",
+          url: "#",
+        },
+      ],
     },
     {
-      name: "Software License Agreements",
+      title: "Recent",
       url: "#",
       icon: Files,
+      items: [
+        {
+          title: "Software Service Agreements",
+          url: "/contract-dashboard",
+        },
+        {
+          title: "Software Development Agreements",
+          url: "#",
+        },
+        {
+          title: "Software License Agreements",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Pinned",
+      url: "#",
+      icon: Files,
+      items: [
+        {
+          title: "Software Service Agreements",
+          url: "/contracts",
+        },
+        {
+          title: "Software Development Agreements",
+          url: "#",
+        },
+        {
+          title: "Software License Agreements",
+          url: "#",
+        },
+      ],
     },
   ],
   navSecondary: [
@@ -89,7 +144,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavContracts projects={data.contracts} />
+        <NavContracts items={data.contracts} />
         <NavSecondary items={data.navSecondary} />
       </SidebarContent>
 
