@@ -49,6 +49,7 @@ const ChatWithZed = () => {
   ];
   const navigate = useNavigate();
   const location = useLocation();
+  const decodedURL = decodeURIComponent(location.pathname);
 
   return (
     <div className="w-full text-sm">
@@ -65,8 +66,7 @@ const ChatWithZed = () => {
         <div className="flex items-center gap-x-3 text-gray-500 p-2">
           <div
             className={`p-1.5 rounded-md hover:bg-gray-100 cursor-pointer ${
-              location.pathname ===
-              `/contract-dashboard/${contractName}/zed-history`
+              decodedURL === `/contract-dashboard/${contractName}/zed-history`
                 ? "bg-gray-100"
                 : ""
             }`}
@@ -80,8 +80,7 @@ const ChatWithZed = () => {
           </div>
           <div
             className={`relative p-1.5 rounded-md hover:bg-gray-100 cursor-pointer ${
-              location.pathname ===
-              `/contract-dashboard/${contractName}/zed-activity`
+              decodedURL === `/contract-dashboard/${contractName}/zed-activity`
                 ? "bg-gray-100"
                 : ""
             }`}

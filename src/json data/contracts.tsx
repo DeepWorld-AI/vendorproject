@@ -130,110 +130,7 @@ export const contracts = [
         { id: "3", question: "What are the SLA and uptime commitments?" },
       ],
     },
-    zed_history: [
-      {
-        title: "Renewal Check-ins",
-        items: [
-          {
-            heading: "Tracked Renewal Dates",
-            text: "Monitored renewal windows and set automated reminders to ensure timely action on SaaS contract renewals.",
-          },
-          {
-            heading: "Usage Analysis",
-            text: "Evaluated SaaS usage data to determine if the service aligns with business needs, identifying opportunities for renegotiation or cancellation of unused licenses.",
-          },
-          {
-            heading: "Proactive Engagement",
-            text: "Initiated early discussions with vendors to review terms, negotiate pricing, and adjust service levels as necessary 134.",
-          },
-        ],
-      },
-      {
-        title: "Invoice Check-ins",
-        items: [
-          {
-            heading: "Payment Monitoring",
-            text: "Verified invoice accuracy for SaaS subscriptions, ensuring alignment with contract terms (e.g., pricing, discounts).",
-          },
-          {
-            heading: "Pending Payments",
-            text: "Flagged overdue invoices and coordinated follow-ups to avoid service interruptions.",
-          },
-          {
-            heading: "Cost Optimization",
-            text: "Identified overpayments or billing errors and recommended adjustments to reduce costs 45.",
-          },
-        ],
-      },
-      {
-        title: "Amendments",
-        items: [
-          {
-            heading: "Drafted Amendments",
-            text: "Created amendments to reflect changes in contract scope, SLAs, or pricing based on evolving business needs.",
-          },
-          {
-            heading: "Compliance Updates",
-            text: "Incorporated regulatory requirements (e.g., GDPR) into contract amendments as needed.",
-          },
-          {
-            heading: "Negotiation Support",
-            text: "Facilitated discussions between stakeholders and vendors to finalize amendment terms efficiently 23.",
-          },
-        ],
-      },
-      {
-        title: "User Q&A",
-        items: [
-          {
-            heading: "Customer Support",
-            text: "Answered user queries about SaaS contract terms, obligations, and renewal processes.",
-          },
-          {
-            heading: "Education",
-            text: "Provided clarity on auto-renewal clauses, termination policies, and SLA expectations to ensure informed decision-making.",
-          },
-          {
-            heading: "Onboarding Assistance",
-            text: "Guided users in understanding how to leverage SaaS tools effectively based on contract provisions 56.",
-          },
-        ],
-      },
-      {
-        title: "Status Updates",
-        items: [
-          {
-            heading: "Weekly Reports",
-            text: "Delivered status updates summarizing key metrics such as renewal deadlines, compliance status, and financial commitments.",
-          },
-          {
-            heading: "Performance Tracking",
-            text: "Highlighted vendor performance against SLAs and flagged any risks or breaches requiring attention.",
-          },
-          {
-            heading: "Stakeholder Alerts",
-            text: "Sent notifications about upcoming deadlines or critical changes in contract status 34.",
-          },
-        ],
-      },
-      {
-        title: "Recalculation of KPIs & Markers",
-        items: [
-          {
-            heading: "Performance Metrics Review",
-            text: "Recalculated KPIs such as SLA adherence (e.g., uptime, response times) and customer satisfaction scores based on real-time data.",
-          },
-          {
-            heading: "Cost-Benefit Analysis",
-            text: "Assessed ROI by comparing SaaS costs with business outcomes achieved during the contract period.",
-          },
-          {
-            heading: "Forecasting Adjustments",
-            text: "Updated financial forecasts based on subscription renewals, cancellations, or price changes 45.",
-          },
-        ],
-      },
-    ],
+    zed_history: [],
     zed_activity: {
       ongoing: [
         {
@@ -285,6 +182,356 @@ export const contracts = [
       ],
     },
   },
-  { contract_name: "Software Development Agreements" },
-  { contract_name: "Master Services Agreements (MSAs)" },
+  {
+    contract_name: "Dealer Portal Development Agreement",
+    ai_summary: [
+      {
+        title: "Financial & Commercial",
+        highlight: "73% Budget usage",
+        metrics: [
+          {
+            label: "Budget Utilization",
+            value: "73%",
+            isPositive: true,
+          },
+          {
+            label: "Invoice Payment Timeliness",
+            value: "92%",
+            isPositive: false,
+          },
+          {
+            label: "Potential Savings",
+            value: "$250K",
+            isPositive: true,
+          },
+        ],
+      },
+      {
+        title: "Obligations & Operational",
+        highlight: "88% milestone completion",
+        metrics: [
+          {
+            label: "Milestone Completion Rate",
+            value: "88%",
+            isPositive: true,
+          },
+          {
+            label: "Integration Progress",
+            value: "70%",
+            isPositive: true,
+          },
+          {
+            label: "Resource Allocation Efficiency",
+            value: "85%",
+            isPositive: false,
+          },
+        ],
+      },
+      {
+        title: "Behavioral & Negotiation",
+        highlight: "Vendor response time 24 hours",
+        metrics: [
+          {
+            label: "Vendor Responsiveness",
+            value: "24h",
+            isPositive: true,
+          },
+          {
+            label: "Scope Change Requests",
+            value: "5",
+            isPositive: false,
+          },
+          {
+            label: "Negotiation Effectiveness",
+            value: "82%",
+            isPositive: true,
+          },
+        ],
+      },
+      {
+        title: "Risk",
+        highlight: "1 compliance risk pending",
+        metrics: [
+          {
+            label: "Compliance Risk",
+            value: "1 pending audit",
+            isPositive: false,
+          },
+          {
+            label: "Cost Overrun Risk",
+            value: "15%",
+            isPositive: false,
+          },
+          {
+            label: "Performance Penalties",
+            value: "$0",
+            isPositive: true,
+          },
+        ],
+      },
+    ],
+    zed_summary: {
+      summary: [
+        {
+          id: "1",
+          icon: "1️⃣",
+          title: "On Track",
+          description: "88% milestone completion",
+        },
+        {
+          id: "2",
+          icon: "2️⃣",
+          title: "Steady Progress",
+          description: "93% client acceptance",
+        },
+        {
+          id: "3",
+          icon: "3️⃣",
+          title: "Issue Alert",
+          description: "cost overrun risks (15%)",
+        },
+        {
+          id: "4",
+          icon: "4️⃣",
+          title: "Opportunities Identified",
+          description: "scope changes (+$150K approved variations)",
+        },
+      ],
+      followUpQuestions: [
+        { id: "1", question: "How will you manage cost overruns?" },
+        { id: "2", question: "Any updates on the compliance audit?" },
+        { id: "3", question: "How can resource efficiency be improved?" },
+      ],
+    },
+    zed_history: [],
+    zed_activity: {
+      ongoing: [
+        {
+          id: "INV-9201",
+          amount: "$150,000",
+          status: "Check In",
+          statusColor: "red",
+          milestone:
+            "Linked to Overcharge Variations: Additional Scope Changes",
+          alert: "Pending Finance Approval",
+          alertColor: "orange",
+        },
+        {
+          id: "INV-4823",
+          amount: "$250,000",
+          status: "Check In",
+          statusColor: "green",
+          milestone: "Linked to Cost Savings Initiative: Cloud Optimization",
+          alert: "Approved",
+          alertColor: "green",
+        },
+      ],
+      upcoming: [
+        {
+          status: "Cleared",
+          description: "Milestone Payment for 88% Completion Rate",
+          amount: "$200,000 Released",
+          statusColor: "green",
+        },
+        {
+          status: "Pending",
+          description: "Invoice for Vendor Development Efforts",
+          amount: "$92,000 Pending",
+          statusColor: "yellow",
+        },
+        {
+          status: "Pending",
+          description: "Review of Scope Change Requests (5 Major Requests)",
+          statusColor: "yellow",
+        },
+        {
+          status: "On Hold",
+          description:
+            "Compliance Audit Costs Due to Pending SOC 2 / ISO 27001",
+          amount: "$50,000 Delayed",
+          statusColor: "red",
+        },
+      ],
+    },
+  },
+  {
+    contract_name: "Software Development Agreements",
+    ai_summary: [
+      {
+        title: "Risk",
+        highlight: "3 major risks identified",
+        metrics: [
+          {
+            label: "IP Ownership & Licensing Risk",
+            value: "70%",
+            isPositive: false,
+          },
+          {
+            label: "Vendor Dependency Risk",
+            value: "65%",
+            isPositive: false,
+          },
+          {
+            label: "Security & Compliance Risk",
+            value: "80%",
+            isPositive: false,
+          },
+        ],
+      },
+      {
+        title: "Financial & Commercial",
+        highlight: "85% milestone-based payments",
+        metrics: [
+          {
+            label: "Fixed Price vs. T&M Model",
+            value: "85%",
+            isPositive: true,
+          },
+          {
+            label: "Hidden Cost Triggers",
+            value: "40%",
+            isPositive: false,
+          },
+          {
+            label: "Penalty & Late Delivery Clauses",
+            value: "90%",
+            isPositive: true,
+          },
+        ],
+      },
+      {
+        title: "Obligations & Operational",
+        highlight: "75% milestone adherence",
+        metrics: [
+          {
+            label: "Project Milestone Adherence",
+            value: "75%",
+            isPositive: false,
+          },
+          {
+            label: "Software Acceptance Criteria",
+            value: "88%",
+            isPositive: true,
+          },
+          {
+            label: "SLAs for Bug Fixes",
+            value: "80%",
+            isPositive: true,
+          },
+        ],
+      },
+      {
+        title: "Behavioral & Negotiation",
+        highlight: "70% Vendor response time",
+        metrics: [
+          {
+            label: "Vendor’s Willingness to Modify Scope",
+            value: "60%",
+            isPositive: false,
+          },
+          {
+            label: "Response Time to Change Requests",
+            value: "70%",
+            isPositive: false,
+          },
+          {
+            label: "Historical Penalty Enforcement",
+            value: "90%",
+            isPositive: true,
+          },
+        ],
+      },
+    ],
+    zed_activity: {
+      ongoing: [
+        {
+          id: "INV-5734",
+          amount: "$150,000",
+          status: "Check In",
+          statusColor: "red",
+          milestone: "Linked to Approved Variation for Scope Expansion",
+          alert: "Pending Financial Approval",
+          alertColor: "orange",
+        },
+        {
+          id: "INV-9832",
+          amount: "$250,000",
+          status: "Check In",
+          statusColor: "green",
+          milestone: "Linked to Cost Optimization Savings Identified",
+          alert: "Approved",
+          alertColor: "green",
+        },
+      ],
+      upcoming: [
+        {
+          status: "Cleared",
+          description: "Payment for On-Time Milestone Completion",
+          amount: "$120,000 Released",
+          statusColor: "green",
+        },
+        {
+          status: "Pending",
+          description: "Invoice for Additional Scope Features",
+          amount: "$150,000 Pending",
+          statusColor: "yellow",
+        },
+        {
+          status: "Pending",
+          description: "Vendor Reviewing Deliverable 5 for Compliance",
+          statusColor: "yellow",
+        },
+        {
+          status: "On Hold",
+          description:
+            "Payment for Late Deliverables Due to Resource Bottlenecks",
+          amount: "$90,000 Delayed",
+          statusColor: "red",
+        },
+      ],
+    },
+    zed_summary: {
+      summary: [
+        {
+          id: "1",
+          icon: "1️⃣",
+          title: "On Track",
+          description: "88% milestone completion",
+        },
+        {
+          id: "2",
+          icon: "2️⃣",
+          title: "Steady Progress",
+          description: "93% client acceptance",
+        },
+        {
+          id: "3",
+          icon: "3️⃣",
+          title: "Risk Alert",
+          description: "15% potential budget overrun",
+        },
+        {
+          id: "4",
+          icon: "4️⃣",
+          title: "Opportunities Identified",
+          description: "Potential $250K cloud savings",
+        },
+      ],
+      followUpQuestions: [
+        {
+          id: "1",
+          question: "How will you manage cost overruns?",
+        },
+        {
+          id: "2",
+          question: "Any updates on the compliance audit?",
+        },
+        {
+          id: "3",
+          question: "What measures can improve resource allocation efficiency?",
+        },
+      ],
+    },
+    zed_history: [],
+  },
 ];

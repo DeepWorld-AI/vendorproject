@@ -19,7 +19,7 @@ const ZedSummary = () => {
       </Fade>
 
       {/* Follow-Up Questions */}
-      <div className="flex flex-col gap-2 mt-36 p-2">
+      <div className="flex flex-col gap-2 p-2 absolute bottom-32">
         <Fade delay={500} cascade triggerOnce>
           {contract.zed_summary?.followUpQuestions?.map((question: any) => (
             <p
