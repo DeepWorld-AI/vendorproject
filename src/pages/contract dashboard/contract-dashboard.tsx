@@ -5,11 +5,11 @@ const ContractDashboard = () => {
   return (
     <>
       <div className="flex">
-        <div className="w-2/4 relative border-r h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="w-2/4 relative border-r h-[calc(100vh-4rem)]">
           <ChatWithZed />
         </div>
 
-        <div className="w-2/4 relative border-r h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="w-2/4 relative border-r h-[calc(100vh-4rem)]">
           <Dashboard />
         </div>
       </div>

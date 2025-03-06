@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Cog, Files, House, ListTodo, Mails } from "lucide-react";
+import { Cog, Files, History, House, ListTodo, Mails, Pin } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -10,6 +10,7 @@ import { VersionSwitcher } from "./version-switcher";
 import { NavMain } from "./nav-main";
 import { NavContracts } from "./nav-contracts";
 import { NavSecondary } from "./nav-secondary";
+import { contracts } from "@/json data/contracts";
 
 const data = {
   navMain: [
@@ -34,7 +35,7 @@ const data = {
         },
         {
           title: "Archeive",
-          url: "/messages/archieve",
+          url: "/messages/archeive",
         },
       ],
     },
@@ -44,16 +45,16 @@ const data = {
       icon: ListTodo,
       items: [
         {
-          title: "task",
-          url: "/messages/inbox",
+          title: "task 1",
+          url: "/task1",
         },
         {
-          title: "task",
-          url: "/messages/outbox",
+          title: "task 2",
+          url: "/task2",
         },
         {
-          title: "task",
-          url: "/messages/archieve",
+          title: "task 3",
+          url: "/task3",
         },
       ],
     },
@@ -63,58 +64,28 @@ const data = {
       title: "All",
       url: "#",
       icon: Files,
-      items: [
-        {
-          title: "Software Service Agreements",
-          url: "/contract",
-        },
-        {
-          title: "Software Development Agreements",
-          url: "#",
-        },
-        {
-          title: "Software License Agreements",
-          url: "#",
-        },
-      ],
+      items: contracts.map((contract) => ({
+        title: contract.contract_name,
+        url: `/contract-dashboard/${contract.contract_name}`,
+      })),
     },
     {
       title: "Recent",
       url: "#",
-      icon: Files,
-      items: [
-        {
-          title: "Software Service Agreements",
-          url: "/contract-dashboard",
-        },
-        {
-          title: "Software Development Agreements",
-          url: "#",
-        },
-        {
-          title: "Software License Agreements",
-          url: "#",
-        },
-      ],
+      icon: History,
+      items: contracts.map((contract) => ({
+        title: contract.contract_name,
+        url: `/contract-dashboard/${contract.contract_name}`,
+      })),
     },
     {
       title: "Pinned",
       url: "#",
-      icon: Files,
-      items: [
-        {
-          title: "Software Service Agreements",
-          url: "/contracts",
-        },
-        {
-          title: "Software Development Agreements",
-          url: "#",
-        },
-        {
-          title: "Software License Agreements",
-          url: "#",
-        },
-      ],
+      icon: Pin,
+      items: contracts.map((contract) => ({
+        title: contract.contract_name,
+        url: `/contract-dashboard/${contract.contract_name}`,
+      })),
     },
   ],
   navSecondary: [
@@ -147,7 +118,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavContracts items={data.contracts} />
         <NavSecondary items={data.navSecondary} />
       </SidebarContent>
-
       <SidebarRail />
     </Sidebar>
   );

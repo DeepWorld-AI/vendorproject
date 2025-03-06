@@ -13,7 +13,7 @@ import {
   Sparkles,
   SquarePlus,
 } from "lucide-react";
-import { Outlet, useLocation, useNavigate } from "react-router";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router";
 import {
   Popover,
   PopoverContent,
@@ -25,6 +25,7 @@ import { cn } from "@/lib/utils";
 const ChatWithZed = () => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const { contractName } = useParams<{ contractName: string }>();
   const frameworks = [
     {
       value: "next.js",
@@ -62,43 +63,46 @@ const ChatWithZed = () => {
           />{" "}
           Ask Zed
         </h1>
-        <div className="flex items-center gap-x-6 text-gray-500 p-2">
+        <div className="flex items-center gap-x-3 text-gray-500 p-2">
           <div
             className={`p-1.5 rounded-md hover:bg-gray-100 cursor-pointer ${
-              location.pathname === "/contract-dashboard/zed-history"
+              location.pathname ===
+              `/contract-dashboard/${contractName}/zed-history`
                 ? "bg-gray-100"
                 : ""
             }`}
           >
             <History
               size={18}
-              onClick={() => navigate("/contract-dashboard/zed-history")}
+              onClick={() =>
+                navigate(`/contract-dashboard/${contractName}/zed-history`)
+              }
             />
           </div>
           <div
             className={`relative p-1.5 rounded-md hover:bg-gray-100 cursor-pointer ${
-              location.pathname === "/contract-dashboard/zed-activity"
+              location.pathname ===
+              `/contract-dashboard/${contractName}/zed-activity`
                 ? "bg-gray-100"
                 : ""
             }`}
           >
             <Bot
               size={18}
-              onClick={() => navigate("/contract-dashboard/zed-activity")}
+              onClick={() =>
+                navigate(`/contract-dashboard/${contractName}/zed-activity`)
+              }
             />
-            <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-red-500"></div>
-          </div>
-          <div className="hover:bg-gray-100 p-1.5 rounded-md">
-            <SquarePlus size={18} className="cursor-pointer" />
+            <div className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500"></div>
           </div>
         </div>
       </div>
 
-      <div className="h-[500px] overflow-scroll pb-10">
+      <div className="h-[500px] overflow-y-auto pb-10">
         <Outlet />
 
         {/* chat-box with zed */}
-        <div className="absolute bottom-0 w-full">
+        <div className="absolute bottom-0 w-full bg-white/60 backdrop-blur-sm">
           <div className="rounded-md m-3">
             <AnimatedGradientBorderTW className="flex flex-col pb-3">
               <Input

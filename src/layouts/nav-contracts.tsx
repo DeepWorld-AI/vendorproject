@@ -1,5 +1,4 @@
 import { ChevronRight, type LucideIcon } from "lucide-react";
-
 import {
   Collapsible,
   CollapsibleContent,
@@ -53,7 +52,7 @@ export function NavContracts({
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton
                     tooltip={item.title}
-                    className={`font-medium ${isActive ? "bg-gray-200" : ""}`}
+                    className={`font-medium ${isActive ? "bg-purple-200" : ""}`}
                   >
                     <Link to={item.url} className="flex items-center gap-2">
                       {item.icon && <item.icon size={16} />}
@@ -67,24 +66,26 @@ export function NavContracts({
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
-                  <SidebarMenuSub>
-                    {item.items.map((subItem) => {
-                      const isSubActive = location.pathname === subItem.url;
-                      return (
-                        <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton asChild>
-                            <Link
-                              to={subItem.url}
-                              className={`block px-1 text-xs py-2 truncate ${
-                                isSubActive ? "bg-gray-200" : ""
-                              }`}
-                            >
-                              {subItem.title}
-                            </Link>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      );
-                    })}
+                  <SidebarMenuSub className="pl-4">
+                    <div className="max-h-40 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                      {item.items.map((subItem) => {
+                        const isSubActive = location.pathname === subItem.url;
+                        return (
+                          <SidebarMenuSubItem key={subItem.title}>
+                            <SidebarMenuSubButton asChild>
+                              <Link
+                                to={subItem.url}
+                                className={`block px-1 text-xs py-2 truncate ${
+                                  isSubActive ? "" : ""
+                                }`}
+                              >
+                                {subItem.title}
+                              </Link>
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                        );
+                      })}
+                    </div>
                   </SidebarMenuSub>
                 </CollapsibleContent>
               </SidebarMenuItem>
@@ -93,7 +94,7 @@ export function NavContracts({
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton
                 tooltip={item.title}
-                className={`font-medium ${isActive ? "bg-gray-200" : ""}`}
+                className={`font-medium ${isActive ? "bg-purple-200" : ""}`}
               >
                 <Link to={item.url} className="flex items-center gap-2">
                   {item.icon && <item.icon size={16} />}

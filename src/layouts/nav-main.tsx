@@ -51,20 +51,22 @@ export function NavMain({
             >
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
-                  <SidebarMenuButton
-                    tooltip={item.title}
-                    className={`font-medium ${isActive ? "bg-gray-200" : ""}`}
-                  >
-                    <Link to={item.url} className="flex items-center gap-2">
+                  <Link to={item.url} className="flex items-center gap-2">
+                    <SidebarMenuButton
+                      tooltip={item.title}
+                      className={`font-medium ${
+                        isActive ? "bg-purple-200" : ""
+                      }`}
+                    >
                       {item.icon && <item.icon size={16} />}
                       <span>{item.title}</span>
-                    </Link>
-                    <ChevronRight
-                      className={`ml-auto transition-transform duration-200 ${
-                        isActive ? "rotate-90" : ""
-                      }`}
-                    />
-                  </SidebarMenuButton>
+                      <ChevronRight
+                        className={`ml-auto transition-transform duration-200 ${
+                          isActive ? "rotate-90" : ""
+                        }`}
+                      />
+                    </SidebarMenuButton>
+                  </Link>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                   <SidebarMenuSub>
@@ -76,7 +78,7 @@ export function NavMain({
                             <Link
                               to={subItem.url}
                               className={`block px-4 py-2 ${
-                                isSubActive ? "bg-gray-200" : ""
+                                isSubActive ? "" : ""
                               }`}
                             >
                               {subItem.title}
@@ -91,15 +93,15 @@ export function NavMain({
             </Collapsible>
           ) : (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton
-                tooltip={item.title}
-                className={`font-medium ${isActive ? "bg-gray-200" : ""}`}
-              >
-                <Link to={item.url} className="flex items-center gap-2">
+              <Link to={item.url} className="flex items-center gap-2">
+                <SidebarMenuButton
+                  tooltip={item.title}
+                  className={`font-medium ${isActive ? "bg-purple-200" : ""}`}
+                >
                   {item.icon && <item.icon size={16} />}
                   <span>{item.title}</span>
-                </Link>
-              </SidebarMenuButton>
+                </SidebarMenuButton>
+              </Link>
             </SidebarMenuItem>
           );
         })}

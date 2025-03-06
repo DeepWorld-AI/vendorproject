@@ -52,7 +52,7 @@ export function NavSecondary({
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton
                     tooltip={item.title}
-                    className={`font-medium ${isActive ? "bg-gray-200" : ""}`}
+                    className={`font-medium ${isActive ? "bg-purple-200" : ""}`}
                   >
                     {item.icon && <item.icon />}
                     <span>{item.title}</span>
@@ -73,7 +73,7 @@ export function NavSecondary({
                             <Link
                               to={subItem.url}
                               className={`block px-4 py-2 ${
-                                isSubActive ? "bg-gray-200" : ""
+                                isSubActive ? "" : ""
                               }`}
                             >
                               {subItem.title}
@@ -90,7 +90,7 @@ export function NavSecondary({
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton
                 tooltip={item.title}
-                className={`font-medium ${isActive ? "bg-gray-200" : ""}`}
+                className={`font-medium ${isActive ? "bg-purple-200" : ""}`}
               >
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
