@@ -11,7 +11,6 @@ import {
   RefreshCcwDot,
   Shuffle,
   Sparkles,
-  SquarePlus,
 } from "lucide-react";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router";
 import {
