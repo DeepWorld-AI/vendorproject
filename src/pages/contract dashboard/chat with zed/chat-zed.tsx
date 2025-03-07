@@ -24,6 +24,7 @@ import { cn } from "@/lib/utils";
 const ChatWithZed = () => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const [active, setActive] = React.useState<string>("Ask Zed");
   const { contractName } = useParams<{ contractName: string }>();
   const frameworks = [
     {
@@ -57,11 +58,11 @@ const ChatWithZed = () => {
       <div className="border-b h-14 px-2 flex justify-between items-center">
         <h1 className="flex items-center gap-2 font-semibold">
           <Sparkles
-            className="-rotate-90"
+            className="-rotate-90 cursor-pointer"
             size={18}
-            onClick={() => navigate("/contract-dashboard")}
+            onClick={() => navigate(`/contract-dashboard/${contractName}`)}
           />{" "}
-          Ask Zed
+          {active}
         </h1>
         <div className="flex items-center gap-x-3 text-gray-500 p-2">
           <div
@@ -73,9 +74,10 @@ const ChatWithZed = () => {
           >
             <History
               size={18}
-              onClick={() =>
-                navigate(`/contract-dashboard/${contractName}/zed-history`)
-              }
+              onClick={() => {
+                navigate(`/contract-dashboard/${contractName}/zed-history`);
+                setActive("Zed History");
+              }}
             />
           </div>
           <div
@@ -87,9 +89,10 @@ const ChatWithZed = () => {
           >
             <Bot
               size={18}
-              onClick={() =>
-                navigate(`/contract-dashboard/${contractName}/zed-activity`)
-              }
+              onClick={() => {
+                navigate(`/contract-dashboard/${contractName}/zed-activity`);
+                setActive("Zed Activity");
+              }}
             />
             <div className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500"></div>
           </div>
@@ -100,79 +103,81 @@ const ChatWithZed = () => {
         <Outlet />
 
         {/* chat-box with zed */}
-        <div className="absolute bottom-0 w-full bg-white/60 backdrop-blur-sm">
-          <div className="rounded-md m-3">
-            <AnimatedGradientBorderTW className="flex flex-col pb-3">
-              <Input
-                type="text"
-                placeholder="Message Zed"
-                className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-              />
-              <div className="flex items-center justify-between px-3 pt-4">
-                <div className="flex items-center gap-2">
-                  <Button variant="outline" className="h-8 px-2.5">
-                    <Paperclip />
-                  </Button>
-                  <Button variant="outline" className="h-8 px-2.5">
-                    <RefreshCcwDot />
-                  </Button>
-                  <Popover open={open} onOpenChange={setOpen}>
-                    <PopoverTrigger
-                      className="border h-8 px-2.5 rounded-md text-xs flex items-center gap-3"
-                      asChild
-                    >
-                      <Button
-                        variant="outline"
-                        role="combobox"
-                        aria-expanded={open}
-                        className=""
+        {active !== "Zed Activity" && (
+          <div className="absolute bottom-0 w-full bg-white/60 backdrop-blur-sm">
+            <div className="rounded-md m-3">
+              <AnimatedGradientBorderTW className="flex flex-col pb-3">
+                <Input
+                  type="text"
+                  placeholder="Message Zed"
+                  className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+                <div className="flex items-center justify-between px-3 pt-4">
+                  <div className="flex items-center gap-2">
+                    <Button variant="outline" className="h-8 px-2.5">
+                      <Paperclip />
+                    </Button>
+                    <Button variant="outline" className="h-8 px-2.5">
+                      <RefreshCcwDot />
+                    </Button>
+                    <Popover open={open} onOpenChange={setOpen}>
+                      <PopoverTrigger
+                        className="border h-8 px-2.5 rounded-md text-xs flex items-center gap-3"
+                        asChild
                       >
-                        <Shuffle size={14} />
-                        {value
-                          ? frameworks.find(
-                              (framework) => framework.value === value
-                            )?.label
-                          : "Auto"}
-                        <ChevronUp size={16} />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-[300px] p-2">
-                      {frameworks.map((framework) => (
-                        <div
-                          key={framework.value}
-                          className="cursor-pointer flex items-center p-1.5 text-sm hover:bg-gray-100 hover:rounded"
-                          onClick={() => {
-                            setValue(
-                              framework.value === value ? "" : framework.value
-                            );
-                            setOpen(false);
-                          }}
+                        <Button
+                          variant="outline"
+                          role="combobox"
+                          aria-expanded={open}
+                          className=""
                         >
-                          {framework.label}
-                          <Check
-                            size={16}
-                            className={cn(
-                              "ml-auto transition-opacity",
-                              value === framework.value
-                                ? "opacity-100"
-                                : "opacity-0"
-                            )}
-                          />
-                        </div>
-                      ))}
-                    </PopoverContent>
-                  </Popover>
+                          <Shuffle size={14} />
+                          {value
+                            ? frameworks.find(
+                                (framework) => framework.value === value
+                              )?.label
+                            : "Auto"}
+                          <ChevronUp size={16} />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-[300px] p-2">
+                        {frameworks.map((framework) => (
+                          <div
+                            key={framework.value}
+                            className="cursor-pointer flex items-center p-1.5 text-sm hover:bg-gray-100 hover:rounded"
+                            onClick={() => {
+                              setValue(
+                                framework.value === value ? "" : framework.value
+                              );
+                              setOpen(false);
+                            }}
+                          >
+                            {framework.label}
+                            <Check
+                              size={16}
+                              className={cn(
+                                "ml-auto transition-opacity",
+                                value === framework.value
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              )}
+                            />
+                          </div>
+                        ))}
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                  <Button
+                    variant="default"
+                    className="bg-purple-400 hover:bg-purple-700 text-white h-8 px-2.5"
+                  >
+                    <ArrowUp />
+                  </Button>
                 </div>
-                <Button
-                  variant="default"
-                  className="bg-purple-400 hover:bg-purple-700 text-white h-8 px-2.5"
-                >
-                  <ArrowUp />
-                </Button>
-              </div>
-            </AnimatedGradientBorderTW>
+              </AnimatedGradientBorderTW>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

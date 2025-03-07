@@ -1,5 +1,15 @@
 import * as React from "react";
-import { Cog, Files, History, House, ListTodo, Mails, Pin } from "lucide-react";
+import {
+  Building,
+  Cog,
+  Files,
+  History,
+  House,
+  ListRestart,
+  ListTodo,
+  Mails,
+  Pin,
+} from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -21,23 +31,13 @@ const data = {
       isActive: true,
     },
     {
-      title: "Messages",
-      url: "/messages/inbox",
-      icon: Mails,
-      items: [
-        {
-          title: "Inbox",
-          url: "/messages/inbox",
-        },
-        {
-          title: "Outbox",
-          url: "/messages/outbox",
-        },
-        {
-          title: "Archeive",
-          url: "/messages/archeive",
-        },
-      ],
+      title: "Contracts",
+      url: "#",
+      icon: Files,
+      items: contracts.map((contract) => ({
+        title: contract.contract_name,
+        url: `/contract-dashboard/${contract.contract_name}`,
+      })),
     },
     {
       title: "Tasks",
@@ -58,34 +58,44 @@ const data = {
         },
       ],
     },
+    {
+      title: "Messages",
+      url: "/messages/inbox",
+      icon: Mails,
+      items: [
+        {
+          title: "Inbox",
+          url: "/messages/inbox",
+        },
+        {
+          title: "Outbox",
+          url: "/messages/outbox",
+        },
+        {
+          title: "Archeive",
+          url: "/messages/archeive",
+        },
+      ],
+    },
   ],
   contracts: [
+    {
+      title: "CounterParties",
+      url: "#",
+      icon: Building,
+      items: [],
+    },
+    {
+      title: "Clause & Terms Library",
+      url: "#",
+      icon: ListRestart,
+      items: [],
+    },
     {
       title: "All",
       url: "#",
       icon: Files,
-      items: contracts.map((contract) => ({
-        title: contract.contract_name,
-        url: `/contract-dashboard/${contract.contract_name}`,
-      })),
-    },
-    {
-      title: "Recent",
-      url: "#",
-      icon: History,
-      items: contracts.map((contract) => ({
-        title: contract.contract_name,
-        url: `/contract-dashboard/${contract.contract_name}`,
-      })),
-    },
-    {
-      title: "Pinned",
-      url: "#",
-      icon: Pin,
-      items: contracts.map((contract) => ({
-        title: contract.contract_name,
-        url: `/contract-dashboard/${contract.contract_name}`,
-      })),
+      items: [],
     },
   ],
   navSecondary: [
