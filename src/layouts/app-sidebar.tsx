@@ -3,12 +3,10 @@ import {
   Building,
   Cog,
   Files,
-  History,
   House,
   ListRestart,
   ListTodo,
   Mails,
-  Pin,
 } from "lucide-react";
 import {
   Sidebar,
