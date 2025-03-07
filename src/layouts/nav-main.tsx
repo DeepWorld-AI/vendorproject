@@ -51,7 +51,7 @@ export function NavMain({
             >
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
-                  <Link to={item.url} className="flex items-center gap-2">
+                  <Link to={item.url} className="flex items-center gap-2 truncate">
                     <SidebarMenuButton
                       tooltip={item.title}
                       className={`font-medium ${
@@ -77,7 +77,7 @@ export function NavMain({
                           <SidebarMenuSubButton asChild>
                             <Link
                               to={subItem.url}
-                              className={`block px-4 py-2 ${
+                              className={`block px-4 py-2 truncate ${
                                 isSubActive ? "" : ""
                               }`}
                             >
@@ -93,7 +93,7 @@ export function NavMain({
             </Collapsible>
           ) : (
             <SidebarMenuItem key={item.title}>
-              <Link to={item.url} className="flex items-center gap-2">
+              <Link to={item.url} className="flex items-center gap-2 truncate">
                 <SidebarMenuButton
                   tooltip={item.title}
                   className={`font-medium ${isActive ? "bg-purple-200" : ""}`}
