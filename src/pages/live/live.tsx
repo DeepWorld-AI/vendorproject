@@ -70,7 +70,7 @@ const Live = () => {
   useEffect(() => {
     const timer2 = setTimeout(() => {
       setShowAnalysis(true);
-    }, 4000);
+    }, 2000);
 
     const timer3 = setTimeout(() => {
       setShowDetails(true);

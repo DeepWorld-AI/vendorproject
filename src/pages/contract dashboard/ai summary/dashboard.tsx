@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex px-2 h-14 items-center gap-3 border-b">
+      <div className="flex justify-between px-2 h-14 items-center border-b">
         {all_btn.map((btn) => (
           <Button
             variant="ghost"

@@ -1,16 +1,17 @@
 import * as React from "react";
 import {
   Building,
-  Cog,
+  ChartColumn,
   Files,
   House,
   ListRestart,
-  ListTodo,
-  Mails,
+  Logs,
+  Workflow,
 } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
@@ -19,6 +20,7 @@ import { NavMain } from "./nav-main";
 import { NavContracts } from "./nav-contracts";
 import { NavSecondary } from "./nav-secondary";
 import { contracts } from "@/json data/contracts";
+import NavUser from "./nav-user";
 
 const data = {
   navMain: [
@@ -37,46 +39,8 @@ const data = {
         url: `/contract-dashboard/${contract.contract_name}`,
       })),
     },
-    {
-      title: "Tasks",
-      url: "/tasks",
-      icon: ListTodo,
-      items: [
-        {
-          title: "task 1",
-          url: "/task1",
-        },
-        {
-          title: "task 2",
-          url: "/task2",
-        },
-        {
-          title: "task 3",
-          url: "/task3",
-        },
-      ],
-    },
-    {
-      title: "Messages",
-      url: "/messages/inbox",
-      icon: Mails,
-      items: [
-        {
-          title: "Inbox",
-          url: "/messages/inbox",
-        },
-        {
-          title: "Outbox",
-          url: "/messages/outbox",
-        },
-        {
-          title: "Archeive",
-          url: "/messages/archeive",
-        },
-      ],
-    },
   ],
-  contracts: [
+  quick_links: [
     {
       title: "CounterParties",
       url: "#",
@@ -90,27 +54,22 @@ const data = {
       items: [],
     },
     {
-      title: "All",
+      title: "Stats & Metrics",
       url: "#",
-      icon: Files,
+      icon: ChartColumn,
       items: [],
     },
   ],
   navSecondary: [
     {
-      title: "Manage",
+      title: "Integrations",
       url: "#",
-      icon: Cog,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+      icon: Workflow,
+    },
+    {
+      title: "Logs",
+      url: "#",
+      icon: Logs,
     },
   ],
 };
@@ -123,9 +82,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavContracts items={data.contracts} />
+        <NavContracts items={data.quick_links} />
         <NavSecondary items={data.navSecondary} />
       </SidebarContent>
+      <SidebarFooter>
+        <NavUser />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );

@@ -34,7 +34,7 @@ export function NavContracts({
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Contracts</SidebarGroupLabel>
+      <SidebarGroupLabel>Quick Links</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => {
           const isActive =

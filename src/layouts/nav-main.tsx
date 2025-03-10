@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/collapsible";
 import {
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -35,7 +34,6 @@ export function NavMain({
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>ZED</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => {
           const isActive =
@@ -51,7 +49,10 @@ export function NavMain({
             >
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
-                  <Link to={item.url} className="flex items-center gap-2 truncate">
+                  <Link
+                    to={item.url}
+                    className="flex items-center gap-2 truncate"
+                  >
                     <SidebarMenuButton
                       tooltip={item.title}
                       className={`font-medium ${
