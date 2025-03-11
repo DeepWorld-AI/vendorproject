@@ -12,4 +12,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ["compromise"],
   },
+  assetsInclude: ["**/*.docx"],
 });

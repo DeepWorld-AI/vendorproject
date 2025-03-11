@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import AiSummary from "./ai-summary";
+import DocumentViewer from "../document/document";
 
 const Dashboard = () => {
   const all_btn = [
@@ -30,8 +31,9 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div className="p-3">
-        <AiSummary />
+      <div className="p-3 h-[600px] overflow-y-auto">
+        {active.toLowerCase() === "ai summary" && <AiSummary />}
+        {active.toLowerCase() === "document" && <DocumentViewer />}
       </div>
     </>
   );

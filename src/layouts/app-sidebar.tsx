@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/sidebar";
 import { VersionSwitcher } from "./version-switcher";
 import { NavMain } from "./nav-main";
-import { NavContracts } from "./nav-contracts";
+import Quicklinks from "./nav-contracts";
 import { NavSecondary } from "./nav-secondary";
 import { contracts } from "@/json data/contracts";
 import NavUser from "./nav-user";
@@ -82,7 +82,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavContracts items={data.quick_links} />
+        <Quicklinks items={data.quick_links} />
         <NavSecondary items={data.navSecondary} />
       </SidebarContent>
       <SidebarFooter>

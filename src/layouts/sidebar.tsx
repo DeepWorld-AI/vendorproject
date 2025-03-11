@@ -15,7 +15,14 @@ import ZedSummary from "@/pages/contract dashboard/chat with zed/zed-summary";
 import ZedHistory from "@/pages/contract dashboard/chat with zed/zed-history";
 import ZedActivity from "@/pages/contract dashboard/chat with zed/zed-activity";
 import { Input } from "@/components/ui/input";
-import { CircleUserRound, MoreHorizontal } from "lucide-react";
+import {
+  CircleAlert,
+  CircleCheck,
+  CircleUserRound,
+  Mail,
+  MoreHorizontal,
+  Settings,
+} from "lucide-react";
 import Live from "@/pages/live/live";
 import {
   Popover,
@@ -69,7 +76,9 @@ export default function Sidebar() {
               <p className="text-sm font-medium cursor-pointer">
                 <Link
                   to="/live"
-                  className={`${location.pathname === "/live" ? "text-[#9B8BF4]" : ""}`}
+                  className={`${
+                    location.pathname === "/live" ? "text-[#9B8BF4]" : ""
+                  }`}
                   onClick={() => setActive("live")}
                 >
                   Live
@@ -104,6 +113,14 @@ export default function Sidebar() {
           )}
           <div className="flex items-center gap-4">
             <Input className="w-[400px] h-9" placeholder="search.." />
+            <Separator orientation="vertical" className="h-4" />
+            <CircleCheck size={18} className="cursor-pointer" />
+            <Separator orientation="vertical" className="h-4" />
+            <Mail size={18} className="cursor-pointer" />
+            <Separator orientation="vertical" className="h-4" />
+            <CircleAlert size={18} className="cursor-pointer" />
+            <Separator orientation="vertical" className="h-4" />
+            <Settings size={18} className="cursor-pointer" />
             <Separator orientation="vertical" className="h-4" />
             <Popover>
               <PopoverTrigger asChild>
