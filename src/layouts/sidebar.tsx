@@ -34,7 +34,7 @@ import ContractsUI from "@/pages/contracts/contracts";
 
 export default function Sidebar() {
   const [isBlurred, setIsBlurred] = useState(false);
-  const [active, setActive] = useState<string>("playground");
+  const [active, setActive] = useState<string>("live");
   const location = useLocation();
 
   useEffect(() => {
@@ -80,7 +80,7 @@ export default function Sidebar() {
                   <Link
                     to="/live"
                     className={`${
-                      location.pathname === "/live" ? "text-[#9B8BF4]" : ""
+                      active === "live" ? "text-[#9B8BF4]" : ""
                     }`}
                     onClick={() => setActive("live")}
                   >

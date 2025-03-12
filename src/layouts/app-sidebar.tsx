@@ -44,7 +44,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     ],
     quick_links: [
       {
-        title: "CounterParties",
+        title: "Vendors",
         url: "#",
         icon: Building,
         items: [],

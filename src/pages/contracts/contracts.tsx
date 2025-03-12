@@ -30,10 +30,12 @@ import {
   Star,
   Trash2,
 } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router";
 
 export default function ContractsUI() {
   const { contract, filterContract } = useContract();
+  const [activeSorting, setActiveSorting] = useState<string>("View All");
 
   return (
     <div className="px-4 py-2 space-y-2">
@@ -45,7 +47,7 @@ export default function ContractsUI() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="secondary" className="text-xs">
-              <ArrowUpWideNarrow /> Sort By
+              <ArrowUpWideNarrow /> Sort By : {activeSorting}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56">
@@ -56,19 +58,25 @@ export default function ContractsUI() {
                   <FileStack />
                 </DropdownMenuShortcut>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => setActiveSorting("Recent Contracts")}
+              >
                 Recent Contracts
                 <DropdownMenuShortcut>
                   <History />
                 </DropdownMenuShortcut>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => setActiveSorting("Pinned Contracts")}
+              >
                 Pinned Contracts
                 <DropdownMenuShortcut>
                   <Pin />
                 </DropdownMenuShortcut>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => setActiveSorting("My Favourite")}
+              >
                 My Favourite
                 <DropdownMenuShortcut>
                   <Star />
