@@ -30,6 +30,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { ContractContextProvider } from "@/context/contract-context";
+import ContractsUI from "@/pages/contracts/contracts";
 
 export default function Sidebar() {
   const [isBlurred, setIsBlurred] = useState(false);
@@ -143,6 +144,7 @@ export default function Sidebar() {
               <Route path="/" element={<Playground />} />
               <Route path="/contract-library" element={<ContractLibrary />} />
               <Route path="/agent-response" element={<AgentResponse />} />
+              <Route path="/contracts" element={<ContractsUI />} />
               <Route
                 path="/contract-dashboard/:contractName"
                 element={<ContractDashboard />}

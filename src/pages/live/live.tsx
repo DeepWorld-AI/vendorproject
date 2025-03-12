@@ -97,13 +97,13 @@ const Live = () => {
       <div className="bg-gradient text-sm">
         <Button
           variant="ghost"
-          className="text-purple-500 font-bold hover:bg-transparent fixed"
+          className="text-purple-500 font-medium hover:bg-transparent fixed"
           onClick={() => navigate("/")}
         >
           <ChevronLeft /> Back
         </Button>
-        <div className="w-3/4 mx-auto pb-24 pt-8">
-          <h1 className="border-b pb-2 font-medium text-xl">
+        <div className="pb-24 pt-12 px-6">
+          <h1 className="border-b pb-2 px-4 font-medium text-xl">
             Welcome back Jeff! Below is a quick update for you.
           </h1>
           <Card className="relative border-0 shadow-none bg-transparent">
@@ -147,7 +147,7 @@ const Live = () => {
                       renewal alerts. Here are the key highlights:
                     </p>
                   </div>
-                  <div className="px-10 max-w-5xl mx-auto">
+                  <div className="px-10">
                     <p className="py-2 text-xs font-medium flex items-center gap-3">
                       updated 3 minutes ago <RotateCw size={14} />
                     </p>

@@ -22,11 +22,11 @@ import { NavSecondary } from "./nav-secondary";
 import NavUser from "./nav-user";
 import { useLocation } from "react-router";
 import NavZedHistory from "./nav-zed-history";
-import { useContract } from "@/hooks/use-contract";
+// import { useContract } from "@/hooks/use-contract";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const location = useLocation();
-  const { contract } = useContract();
+  // const { contract } = useContract();
 
   const data = {
     navMain: [
@@ -38,12 +38,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       },
       {
         title: "Contracts",
-        url: "#",
+        url: "/contracts",
         icon: Files,
-        items: contract.map((cont: any) => ({
-          title: cont.contract_name,
-          url: `/contract-dashboard/${cont.contract_name}`,
-        })),
       },
     ],
     quick_links: [
@@ -78,16 +74,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         icon: Logs,
       },
     ],
-    zedHistory: Array.isArray(contract)
-      ? contract.flatMap(
-          (cont) =>
-            cont.zed_history?.map((chat: any) => ({
-              name: chat.title,
-            })) || []
-        )
-      : contract?.zed_history?.map((chat: any) => ({
-          name: chat.title,
-        })) || [],
+    zedHistory: [],
   };
 
   return (

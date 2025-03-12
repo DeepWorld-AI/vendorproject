@@ -12,6 +12,10 @@ export interface Chat {
 export const contracts = [
   {
     contract_name: "Software Service (SaaS) Agreements",
+    type: "Master Services Agreement",
+    role: "Client",
+    jurisdiction: "New York, USA",
+    status: "Signed",
     ai_summary: [
       {
         title: "Risk",
@@ -246,6 +250,10 @@ export const contracts = [
   },
   {
     contract_name: "Dealer Portal Development Agreement",
+    type: "Commercial Lease",
+    role: "Landlord",
+    jurisdiction: "Ontario, Canada",
+    status: "Active",
     ai_summary: [
       {
         title: "Financial & Commercial",
@@ -418,6 +426,10 @@ export const contracts = [
   },
   {
     contract_name: "Software Development Agreements",
+    type: "Vendor Agreement",
+    role: "Vendor",
+    jurisdiction: "Ontario, Canada",
+    status: "Approved",
     ai_summary: [
       {
         title: "Risk",
