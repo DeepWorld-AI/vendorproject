@@ -20,6 +20,12 @@ import {
 } from "@/components/ui/popover";
 import React from "react";
 import { cn } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const ChatWithZed = () => {
   const [open, setOpen] = React.useState(false);
@@ -72,13 +78,24 @@ const ChatWithZed = () => {
                 : ""
             }`}
           >
-            <History
-              size={18}
-              onClick={() => {
-                navigate(`/contract-dashboard/${contractName}/zed-history`);
-                setActive("Zed History");
-              }}
-            />
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <History
+                    size={18}
+                    onClick={() => {
+                      navigate(
+                        `/contract-dashboard/${contractName}/zed-history`
+                      );
+                      setActive("Zed History");
+                    }}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Zed History</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
           <div
             className={`relative p-1.5 rounded-md hover:bg-gray-100 cursor-pointer ${
@@ -87,13 +104,25 @@ const ChatWithZed = () => {
                 : ""
             }`}
           >
-            <Bot
-              size={18}
-              onClick={() => {
-                navigate(`/contract-dashboard/${contractName}/zed-activity`);
-                setActive("Zed Activity");
-              }}
-            />
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Bot
+                    size={18}
+                    onClick={() => {
+                      navigate(
+                        `/contract-dashboard/${contractName}/zed-activity`
+                      );
+                      setActive("Zed Activity");
+                    }}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Zed Activity</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+
             <div className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500"></div>
           </div>
         </div>

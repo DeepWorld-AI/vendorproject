@@ -5,7 +5,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const PAGE_HEIGHT = 600;
-
 const DocumentViewer: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [numPages, setNumPages] = useState<number | null>(null);
@@ -43,7 +42,7 @@ const DocumentViewer: React.FC = () => {
     if (uploadedFile.type === "application/pdf") {
       const arrayBuffer = await uploadedFile.arrayBuffer();
       const text = await extractTextFromPDF(arrayBuffer);
-      setTextPages(chunkText(text, 3000)); // Take more words per page
+      setTextPages(chunkText(text, 3000));
     } else if (
       uploadedFile.type ===
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -55,8 +54,7 @@ const DocumentViewer: React.FC = () => {
             arrayBuffer: event.target.result,
           });
 
-          // Group multiple paragraphs together for a better page format
-          const pages = chunkText(value.replace(/<\/p>/g, "\n\n"), 4000);
+          const pages = chunkText(value.replace(/<\/p>/g, "\n\n"), 1000);
           setTextPages(pages);
         }
       };
@@ -65,7 +63,7 @@ const DocumentViewer: React.FC = () => {
       const reader = new FileReader();
       reader.onload = (event) => {
         const text = event.target?.result as string;
-        setTextPages(chunkText(text, 1000)); // More lines per page
+        setTextPages(chunkText(text, 1000));
       };
       reader.readAsText(uploadedFile);
     }
@@ -82,12 +80,27 @@ const DocumentViewer: React.FC = () => {
   };
 
   const goToPrevPage = () => {
-    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+      scrollToTop();
+    }
   };
 
   const goToNextPage = () => {
-    if (currentPage < (numPages || textPages.length || 1))
+    if (currentPage < (numPages || textPages.length || 1)) {
       setCurrentPage((prev) => prev + 1);
+      scrollToTop();
+    }
+  };
+
+  const scrollToTop = () => {
+    const container = document.querySelector(".scroll-container");
+    if (container) {
+      container.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -128,10 +141,11 @@ const DocumentViewer: React.FC = () => {
           </div>
         </div>
       ) : textPages.length > 0 ? (
-        <div className="border p-4 shadow-md w-[600px] h-[550px] overflow-hidden rounded-md">
+        <div className="scroll-container border p-4 shadow-md w-[600px] h-[550px] overflow-y-auto rounded-md scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
           <div
             dangerouslySetInnerHTML={{ __html: textPages[currentPage - 1] }}
           />
+
           <div className="absolute -bottom-9 right-0">
             <div className="flex justify-between gap-2 items-center px-2">
               <button

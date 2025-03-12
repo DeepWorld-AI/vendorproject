@@ -15,6 +15,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import { Link, useLocation } from "react-router";
+import { useContract } from "@/hooks/use-contract";
 
 export function NavMain({
   items,
@@ -30,6 +31,7 @@ export function NavMain({
     }[];
   }[];
 }) {
+  const { filterContract } = useContract();
   const location = useLocation();
 
   return (
@@ -75,7 +77,10 @@ export function NavMain({
                       const isSubActive = location.pathname === subItem.url;
                       return (
                         <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton asChild>
+                          <SidebarMenuSubButton
+                            onClick={() => filterContract(subItem.title)}
+                            asChild
+                          >
                             <Link
                               to={subItem.url}
                               className={`block px-4 py-2 truncate ${

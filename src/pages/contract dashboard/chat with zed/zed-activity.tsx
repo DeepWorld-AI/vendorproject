@@ -10,7 +10,7 @@ import { Fade } from "react-awesome-reveal";
 import { useContract } from "@/hooks/use-contract";
 
 const ZedActivity = () => {
-  const { contract } = useContract();
+  const { filteredContract } = useContract();
   return (
     <div className="zed-activity text-sm px-4">
       <Accordion
@@ -28,7 +28,7 @@ const ZedActivity = () => {
             </AccordionTrigger>
 
             <AccordionContent>
-              {contract.zed_activity.ongoing.map((activity: any) => (
+              {filteredContract.zed_activity.ongoing.map((activity: any) => (
                 <div
                   key={activity.id}
                   className="border rounded-lg p-4 space-y-2 mt-3"
@@ -82,20 +82,22 @@ const ZedActivity = () => {
 
             <AccordionContent>
               <ul className="space-y-2 text-sm">
-                {contract.zed_activity.upcoming.map((item: any, index: any) => (
-                  <li
-                    key={index}
-                    className={`text-${item.statusColor}-600 flex items-center gap-2`}
-                  >
-                    <Circle
-                      className={`bg-${item.statusColor}-400 w-2.5 h-2.5 text-${item.statusColor}-600 rounded-full`}
-                    />
-                    {item.description}{" "}
-                    {item.amount && (
-                      <span className="text-gray-600">({item.amount})</span>
-                    )}
-                  </li>
-                ))}
+                {filteredContract.zed_activity.upcoming.map(
+                  (item: any, index: any) => (
+                    <li
+                      key={index}
+                      className={`text-${item.statusColor}-600 flex items-center gap-2`}
+                    >
+                      <Circle
+                        className={`bg-${item.statusColor}-400 w-2.5 h-2.5 text-${item.statusColor}-600 rounded-full`}
+                      />
+                      {item.description}{" "}
+                      {item.amount && (
+                        <span className="text-gray-600">({item.amount})</span>
+                      )}
+                    </li>
+                  )
+                )}
               </ul>
             </AccordionContent>
           </Fade>

@@ -1,3 +1,14 @@
+interface Message {
+  role: "customer" | "agent";
+  text: string;
+}
+
+export interface Chat {
+  id: number;
+  title: string;
+  messages: Message[];
+}
+
 export const contracts = [
   {
     contract_name: "Software Service (SaaS) Agreements",
@@ -130,7 +141,58 @@ export const contracts = [
         { id: "3", question: "What are the SLA and uptime commitments?" },
       ],
     },
-    zed_history: [],
+    zed_history: [
+      {
+        id: 1,
+        title: "Contract Renewal Process",
+        messages: [
+          { role: "customer", text: "Hey ZED, how do I renew a contract?" },
+          {
+            role: "agent",
+            text: "To renew a contract, check clause 12 in your agreement.",
+          },
+          { role: "customer", text: "Got it, thanks!" },
+          {
+            role: "agent",
+            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione iste hic recusandae provident. Quasi dolorem quisquam,distinctio illum deserunt laborum?",
+          },
+          {
+            role: "customer",
+            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione iste hic recusandae provident.",
+          },
+          {
+            role: "agent",
+            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione iste hic recusandae provident. Quasi dolorem quisquam,distinctio illum deserunt laborum?",
+          },
+          {
+            role: "customer",
+            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione iste hic recusandae provident.",
+          },
+        ],
+      },
+      {
+        id: 2,
+        title: "Termination Clauses",
+        messages: [
+          { role: "customer", text: "Can I terminate my contract early?" },
+          {
+            role: "agent",
+            text: "Early termination depends on penalty clauses.",
+          },
+        ],
+      },
+      {
+        id: 3,
+        title: "Payment Terms",
+        messages: [
+          { role: "customer", text: "When should I expect my payments?" },
+          {
+            role: "agent",
+            text: "Check section 4 of your contract for payment schedules.",
+          },
+        ],
+      },
+    ],
     zed_activity: {
       ongoing: [
         {

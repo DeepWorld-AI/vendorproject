@@ -3,14 +3,14 @@ import { ArrowDown, ArrowUp } from "lucide-react";
 import { Fade } from "react-awesome-reveal";
 
 const AiSummary = () => {
-  const { contract } = useContract();
+  const { filteredContract } = useContract();
   return (
     <>
       <div className="ai-summary text-sm">
-        <h1 className="font-semibold text-base">{contract.contract_name}</h1>
+        <h1 className="font-semibold text-base">{filteredContract.contract_name}</h1>
 
         <div className="grid grid-cols-2 gap-2 py-4">
-          {contract.ai_summary.map((card: any, index: any) => (
+          {filteredContract.ai_summary?.map((card: any, index: any) => (
             <Fade key={index} delay={500} cascade triggerOnce>
               <div className="border rounded-lg p-4 text-xs shadow-sm bg-white">
                 <h3 className="text-gray-600 font-medium text-base">
