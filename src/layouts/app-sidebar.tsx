@@ -105,7 +105,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         {!location.pathname.includes("/zed-history") && (
           <NavSecondary items={data.navSecondary} />
         )}
-        {<NavZedHistory favorites={data.zedHistory} />}
+        {location.pathname.includes("/zed-history") && (
+          <NavZedHistory favorites={data.zedHistory} />
+        )}
       </SidebarContent>
       <SidebarFooter>
         <NavUser />
