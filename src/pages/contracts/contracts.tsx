@@ -98,11 +98,7 @@ export default function ContractsUI() {
                 Role <ArrowDown size={14} className="cursor-pointer" />
               </div>
             </TableHead>
-            <TableHead>
-              <div className="flex items-center gap-1">
-                Jurisdiction <ArrowDown size={14} className="cursor-pointer" />
-              </div>
-            </TableHead>
+
             <TableHead>
               <div className="flex items-center gap-1">
                 Status <ArrowDown size={14} className="cursor-pointer" />
@@ -130,7 +126,6 @@ export default function ContractsUI() {
 
               <TableCell className="py-1">{file.type}</TableCell>
               <TableCell className="py-1">{file.role}</TableCell>
-              <TableCell className="py-1">{file.jurisdiction}</TableCell>
               <TableCell className="text-blue-500 py-1">
                 <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">
                   {file.status}

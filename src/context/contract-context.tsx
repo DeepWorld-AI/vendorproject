@@ -2,75 +2,60 @@ import { Chat, contracts } from "@/json data/contracts";
 import { Contract } from "@/types";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-interface ContractContextProps {
-  contract: Contract[] | null;
-  filteredContract: Contract[] | null;
-  filterContract: (contractTitle: string) => void;
-  searchFilterContract: (searchTerm: string) => void;
-  activeChat: Chat | null;
+interface contractContextProps {
+  contract: any | null;
+  filteredContract: any | null;
+  filterContract: (contratTitle: string) => void;
+  activeChat: Chat | any;
   filterZedHistory: (title: string) => void;
 }
 
-export const ContractContext = createContext<ContractContextProps | undefined>(
+export const ContractContext = createContext<contractContextProps | undefined>(
   undefined
 );
 
-interface ContextProviderProps {
+interface contextProviderProps {
   children: ReactNode;
 }
 
-export const ContractContextProvider = ({ children }: ContextProviderProps) => {
-  // Initialize states
-  const [contract, setContract] = useState<Contract[]>(contracts ?? []);
-  const [filteredContract, setFilteredContract] = useState<Contract[] | null>(
-    null
+export const ContractContextProvider = ({ children }: contextProviderProps) => {
+  // Get the contrat name from url
+  const [activeChat, setActiveChat] = useState(
+    contracts[0]?.zed_history?.[0] ?? { id: 0, title: "", messages: [] }
   );
-  const [activeChat, setActiveChat] = useState<Chat | null>({
-    id: 0,
-    title: "No Chat Found",
-    messages: [],
-  });
 
-  // Sync contract state when `contracts` change
+  const [contract, setContract] = useState<Contract[]>(contracts ?? []);
+
+  // Store filtered contract (or initially show all)
+  const [filteredContract, setFilteredContract] = useState<Contract | null>(
+    contracts.length > 0 ? contracts[0] : null
+  );
+
+  // Update state when `contracts` change (useful if fetched from an API)
   useEffect(() => {
     setContract(contracts ?? []);
   }, [contracts]);
 
-  // Function to filter contracts by title
+  // function to set active contracts
   function filterContract(contractTitle: string) {
     if (!contract || contract.length === 0) return;
 
     const foundContract = contract.find(
       (cont) => cont.contract_name.toLowerCase() === contractTitle.toLowerCase()
     );
-
-    setFilteredContract(foundContract ? [foundContract] : []);
+    setFilteredContract(foundContract ?? null);
   }
 
-  // Function to filter and set the active chat history
+  // Function to filter and set the active chat history of Zed
   function filterZedHistory(title: string) {
     const chat = contracts
-      .flatMap((cont: any) => cont.zed_history ?? [])
-      .find(
-        (hist: any) => hist.title.toLowerCase() === title.toLowerCase()
-      ) ?? {
+      .flatMap((cont) => cont.zed_history ?? [])
+      .find((hist) => hist.title.toLowerCase() === title.toLowerCase()) ?? {
       id: 0,
       title: "No Chat Found",
       messages: [],
     };
-
-    setActiveChat(chat);
-  }
-
-  // Function to search and filter contracts by name or type
-  function searchFilterContract(searchTerm: string) {
-    const filtered = contracts.filter(
-      (file: any) =>
-        file.contract_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        file.type.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    setFilteredContract(filtered.length > 0 ? filtered : []);
+    setActiveChat({ ...chat });
   }
 
   return (
@@ -79,7 +64,6 @@ export const ContractContextProvider = ({ children }: ContextProviderProps) => {
         contract,
         filteredContract,
         filterContract,
-        searchFilterContract,
         activeChat,
         filterZedHistory,
       }}
