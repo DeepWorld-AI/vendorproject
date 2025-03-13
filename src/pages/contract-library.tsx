@@ -160,7 +160,10 @@ export default function ContractLibrary() {
                   ? "border-blue-200 bg-gradient-to-r from-pink-50 to-violet-50"
                   : "hover:border-gray-400"
               )}
-              onClick={() => setSelectedContract(contract.title)}
+              onClick={() => {
+                localStorage.setItem("contractTitle", contract.title);
+                setSelectedContract(contract.title);
+              }}
             >
               <span className="block bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full w-fit mb-2">
                 {contract.category}

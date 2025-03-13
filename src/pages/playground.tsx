@@ -28,7 +28,10 @@ const Playground = () => {
         <CardContent className="shadow-none p-4 relative bg-white rounded-xl">
           <div className="flex items-center space-x-2">
             <Avatar className="w-8 h-8">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarImage
+                src="https://r2.erweima.ai/imgcompressed/compressed_b9be5ab00f146e784ddeff98dc99caa8.webp"
+                alt="zed-logo"
+              />
               <AvatarFallback>ZED</AvatarFallback>
             </Avatar>
             <p className="text-sm">
@@ -62,7 +65,10 @@ const Playground = () => {
                     variant="outline"
                     className="mt-3 border rounded-lg px-4 py-2 text-blue-400 border-blue-400 hover:bg-blue-50 transition"
                   >
-                    <Link to="/contract-library" className="flex items-center gap-2">
+                    <Link
+                      to="/contract-library"
+                      className="flex items-center gap-2"
+                    >
                       Choose from Library <ArrowRight className="w-4 h-4" />
                     </Link>
                   </Button>

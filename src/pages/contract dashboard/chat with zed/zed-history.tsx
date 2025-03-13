@@ -1,52 +1,29 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useContract } from "@/hooks/use-contract";
-
 const ZedHistory = () => {
-  const { activeChat } = useContract();
-
   return (
-    <div className="flex-1 flex flex-col p-2">
-      <h2 className="text-xl font-semibold border-b pb-2">
-        {activeChat?.title}
-      </h2>
-      <div className="flex-1 overflow-y-auto py-1 px-0 space-y-4">
-        {activeChat?.messages?.map((msg: any, index: any) => (
+    <div className="p-4 flex flex-col items-center mt-12">
+      <div className="text-center">
+        <h1 className="text-3xl font-bold text-gray-800">Hi there !!</h1>
+        <h2 className="text-2xl font-semibold text-purple-500 mt-2">
+          What would you like to manage?
+        </h2>
+        <p className="text-gray-500 mt-2">
+          Use one of the common contract actions below or start with your own
+          query.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-6">
+        {[
+          "Review a contract draft",
+          "Summarize a contract",
+          "Check contract compliance",
+          "Check Activity",
+        ].map((action, index) => (
           <div
             key={index}
-            className={`flex gap-2 ${
-              msg.role === "agent" ? "justify-start" : "justify-end"
-            }`}
+            className="p-2 shadow-sm border text-xs rounded-lg cursor-pointer text-gray-500 hover:bg-gray-100 transition"
           >
-            {/* Show Avatar for Agent */}
-            {msg.role === "agent" && (
-              <Avatar className="w-8 h-8">
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="Agent Avatar"
-                />
-                <AvatarFallback>ZED</AvatarFallback>
-              </Avatar>
-            )}
-
-            {/* Message Bubble */}
-            <div
-              className={`p-2 rounded-md max-w-xs ${
-                msg.role === "agent" ? "bg-gray-200" : "bg-purple-50"
-              }`}
-            >
-              {msg.text}
-            </div>
-
-            {/* Show Avatar for Customer */}
-            {msg.role === "customer" && (
-              <Avatar className="w-8 h-8">
-                <AvatarImage
-                  src="https://ui-avatars.com/api/?name=Aquib"
-                  alt="customer"
-                />
-                <AvatarFallback>AQ</AvatarFallback>
-              </Avatar>
-            )}
+            {action}
           </div>
         ))}
       </div>

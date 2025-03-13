@@ -36,7 +36,7 @@ export default function NavUser() {
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  src="https://r2.erweima.ai/imgcompressed/compressed_b9be5ab00f146e784ddeff98dc99caa8.webp"
                   alt="@shadcn"
                 />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>

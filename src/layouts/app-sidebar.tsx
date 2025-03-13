@@ -83,18 +83,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <VersionSwitcher />
       </SidebarHeader>
       <SidebarContent>
-        {!location.pathname.includes("/zed-history") && (
-          <NavMain items={data.navMain} />
-        )}
-        {!location.pathname.includes("/zed-history") && (
-          <Quicklinks items={data.quick_links} />
-        )}
-        {!location.pathname.includes("/zed-history") && (
-          <NavSecondary items={data.navSecondary} />
-        )}
-        {location.pathname.includes("/zed-history") && (
-          <NavZedHistory favorites={data.zedHistory} />
-        )}
+        <NavMain items={data.navMain} />
+        <Quicklinks items={data.quick_links} />
+        <NavSecondary items={data.navSecondary} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser />

@@ -61,7 +61,7 @@ const AgentResponse = () => {
               <div className="flex items-center space-x-2">
                 <Avatar className="w-8 h-8">
                   <AvatarImage
-                    src="https://github.com/shadcn.png"
+                    src="https://r2.erweima.ai/imgcompressed/compressed_b9be5ab00f146e784ddeff98dc99caa8.webp"
                     alt="@shadcn"
                   />
                   <AvatarFallback>ZED</AvatarFallback>
@@ -85,7 +85,7 @@ const AgentResponse = () => {
               <div className="flex items-center space-x-2">
                 <Avatar className="w-8 h-8">
                   <AvatarImage
-                    src="https://github.com/shadcn.png"
+                    src="https://r2.erweima.ai/imgcompressed/compressed_b9be5ab00f146e784ddeff98dc99caa8.webp"
                     alt="@shadcn"
                   />
                   <AvatarFallback>ZED</AvatarFallback>
@@ -133,7 +133,7 @@ const AgentResponse = () => {
                   <div className="flex items-center space-x-2">
                     <Avatar className="w-8 h-8">
                       <AvatarImage
-                        src="https://github.com/shadcn.png"
+                        src="https://r2.erweima.ai/imgcompressed/compressed_b9be5ab00f146e784ddeff98dc99caa8.webp"
                         alt="@shadcn"
                       />
                       <AvatarFallback>ZED</AvatarFallback>
@@ -257,7 +257,7 @@ const AgentResponse = () => {
                   <div className="flex items-center space-x-2">
                     <Avatar className="w-8 h-8">
                       <AvatarImage
-                        src="https://github.com/shadcn.png"
+                        src="https://r2.erweima.ai/imgcompressed/compressed_b9be5ab00f146e784ddeff98dc99caa8.webp"
                         alt="@shadcn"
                       />
                       <AvatarFallback>ZED</AvatarFallback>
@@ -315,7 +315,7 @@ const AgentResponse = () => {
                   <div className="flex items-center space-x-2">
                     <Avatar className="w-8 h-8">
                       <AvatarImage
-                        src="https://github.com/shadcn.png"
+                        src="https://r2.erweima.ai/imgcompressed/compressed_b9be5ab00f146e784ddeff98dc99caa8.webp"
                         alt="@shadcn"
                       />
                       <AvatarFallback>ZED</AvatarFallback>
@@ -409,7 +409,7 @@ const AgentResponse = () => {
                   <div className="flex items-center space-x-2">
                     <Avatar className="w-8 h-8">
                       <AvatarImage
-                        src="https://github.com/shadcn.png"
+                        src="https://r2.erweima.ai/imgcompressed/compressed_b9be5ab00f146e784ddeff98dc99caa8.webp"
                         alt="@shadcn"
                       />
                       <AvatarFallback>ZED</AvatarFallback>
