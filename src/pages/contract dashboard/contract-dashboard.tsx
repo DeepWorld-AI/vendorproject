@@ -4,12 +4,12 @@ import Dashboard from "./ai summary/dashboard";
 const ContractDashboard = () => {
   return (
     <>
-      <div className="grid grid-cols-2">
-        <div className="relative border-r h-[calc(100vh-4rem)]">
+      <div className="flex h-[calc(100vh-4rem)] w-full">
+        <div className="w-1/2 border-r h-full">
           <ChatWithZed />
         </div>
 
-        <div className="relative border-r h-[calc(100vh-4rem)]">
+        <div className="w-1/2 h-full">
           <Dashboard />
         </div>
       </div>

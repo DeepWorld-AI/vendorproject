@@ -20,14 +20,8 @@ import { NavMain } from "./nav-main";
 import Quicklinks from "./nav-contracts";
 import { NavSecondary } from "./nav-secondary";
 import NavUser from "./nav-user";
-import { useLocation } from "react-router";
-import NavZedHistory from "./nav-zed-history";
-// import { useContract } from "@/hooks/use-contract";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const location = useLocation();
-  // const { contract } = useContract();
-
   const data = {
     navMain: [
       {

@@ -42,6 +42,7 @@ import {
 } from "@/components/ui/sheet";
 
 export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false);
   const [isBlurred, setIsBlurred] = useState(false);
   const [active, setActive] = useState<string>("live");
   const location = useLocation();
@@ -60,7 +61,7 @@ export default function Sidebar() {
   }, [location.pathname]);
 
   return (
-    <SidebarProvider>
+    <SidebarProvider open={isOpen} onOpenChange={setIsOpen}>
       <ContractContextProvider>
         <AppSidebar />
 

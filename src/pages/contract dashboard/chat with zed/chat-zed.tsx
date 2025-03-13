@@ -6,7 +6,6 @@ import {
   Bot,
   Check,
   ChevronUp,
-  History,
   MessagesSquare,
   Paperclip,
   RefreshCcwDot,
@@ -60,9 +59,8 @@ const ChatWithZed = () => {
   const decodedURL = decodeURIComponent(location.pathname);
 
   return (
-    <div className="w-full text-sm">
-      {/* Header */}
-      <div className="border-b h-14 px-2 flex justify-between items-center">
+    <div className="text-sm relative">
+      <div className="border-b z-40 h-14 px-2 flex justify-between items-center">
         <h1 className="flex items-center gap-2 font-semibold">
           <Sparkles
             className="-rotate-90 cursor-pointer"
@@ -132,82 +130,82 @@ const ChatWithZed = () => {
         </div>
       </div>
 
-      <div className="h-[500px] overflow-y-auto pb-10">
+      <div className="overflow-y-auto pb-10 h-[450px]">
         <Outlet />
+      </div>
 
-        {/* chat-box with zed */}
-        <div className="absolute bottom-0 w-full bg-white/60 backdrop-blur-sm">
-          <div className="rounded-md m-3">
-            <AnimatedGradientBorderTW className="flex flex-col pb-3">
-              <Input
-                type="text"
-                placeholder="Message Zed"
-                className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-              />
-              <div className="flex items-center justify-between px-3 pt-4">
-                <div className="flex items-center gap-2">
-                  <Button variant="outline" className="h-8 px-2.5">
-                    <Paperclip />
-                  </Button>
-                  <Button variant="outline" className="h-8 px-2.5">
-                    <RefreshCcwDot />
-                  </Button>
-                  <Popover open={open} onOpenChange={setOpen}>
-                    <PopoverTrigger
-                      className="border h-8 px-2.5 rounded-md text-xs flex items-center gap-3"
-                      asChild
-                    >
-                      <Button
-                        variant="outline"
-                        role="combobox"
-                        aria-expanded={open}
-                        className=""
-                      >
-                        <Shuffle size={14} />
-                        {value
-                          ? frameworks.find(
-                              (framework) => framework.value === value
-                            )?.label
-                          : "Auto"}
-                        <ChevronUp size={16} />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-[300px] p-2">
-                      {frameworks.map((framework) => (
-                        <div
-                          key={framework.value}
-                          className="cursor-pointer flex items-center p-1.5 text-sm hover:bg-gray-100 hover:rounded"
-                          onClick={() => {
-                            setValue(
-                              framework.value === value ? "" : framework.value
-                            );
-                            setOpen(false);
-                          }}
-                        >
-                          {framework.label}
-                          <Check
-                            size={16}
-                            className={cn(
-                              "ml-auto transition-opacity",
-                              value === framework.value
-                                ? "opacity-100"
-                                : "opacity-0"
-                            )}
-                          />
-                        </div>
-                      ))}
-                    </PopoverContent>
-                  </Popover>
-                </div>
-                <Button
-                  variant="default"
-                  className="bg-purple-400 hover:bg-purple-700 text-white h-8 px-2.5"
-                >
-                  <ArrowUp />
+      {/* chat-box with zed */}
+      <div className="absolute bottom-0 z-40 w-full bg-white/60 backdrop-blur-sm">
+        <div className="rounded-md m-3">
+          <AnimatedGradientBorderTW className="flex flex-col pb-3">
+            <Input
+              type="text"
+              placeholder="Message Zed"
+              className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+            />
+            <div className="flex items-center justify-between px-3 pt-4">
+              <div className="flex items-center gap-2">
+                <Button variant="outline" className="h-8 px-2.5">
+                  <Paperclip />
                 </Button>
+                <Button variant="outline" className="h-8 px-2.5">
+                  <RefreshCcwDot />
+                </Button>
+                <Popover open={open} onOpenChange={setOpen}>
+                  <PopoverTrigger
+                    className="border h-8 px-2.5 rounded-md text-xs flex items-center gap-3"
+                    asChild
+                  >
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      aria-expanded={open}
+                      className=""
+                    >
+                      <Shuffle size={14} />
+                      {value
+                        ? frameworks.find(
+                            (framework) => framework.value === value
+                          )?.label
+                        : "Auto"}
+                      <ChevronUp size={16} />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-[300px] p-2">
+                    {frameworks.map((framework) => (
+                      <div
+                        key={framework.value}
+                        className="cursor-pointer flex items-center p-1.5 text-sm hover:bg-gray-100 hover:rounded"
+                        onClick={() => {
+                          setValue(
+                            framework.value === value ? "" : framework.value
+                          );
+                          setOpen(false);
+                        }}
+                      >
+                        {framework.label}
+                        <Check
+                          size={16}
+                          className={cn(
+                            "ml-auto transition-opacity",
+                            value === framework.value
+                              ? "opacity-100"
+                              : "opacity-0"
+                          )}
+                        />
+                      </div>
+                    ))}
+                  </PopoverContent>
+                </Popover>
               </div>
-            </AnimatedGradientBorderTW>
-          </div>
+              <Button
+                variant="default"
+                className="bg-purple-400 hover:bg-purple-700 text-white h-8 px-2.5"
+              >
+                <ArrowUp />
+              </Button>
+            </div>
+          </AnimatedGradientBorderTW>
         </div>
       </div>
     </div>
