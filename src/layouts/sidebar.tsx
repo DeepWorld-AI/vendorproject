@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/popover";
 import { ContractContextProvider } from "@/context/contract-context";
 import ContractsUI from "@/pages/contracts/contracts";
+import Vendors from "@/pages/counterparty/counterparty";
 
 export default function Sidebar() {
   const [isBlurred, setIsBlurred] = useState(false);
@@ -60,12 +61,16 @@ export default function Sidebar() {
             className={`flex justify-between sticky top-0 h-16 z-50 shrink-0 items-center border-b px-4 transition duration-300
               ${isBlurred ? "bg-white/60 backdrop-blur-md" : "bg-white"}`}
           >
-            {location.pathname !== "/live" && (
-              <div className="flex items-center gap-2">
-                <SidebarTrigger className="-ml-1" />
-                <Separator orientation="vertical" className="mr-2 h-4" />
+            <div className="flex items-center gap-2">
+              <SidebarTrigger className="-ml-1" />
+              <Separator orientation="vertical" className="mr-2 h-4" />
+              {location.pathname === "/" && (
                 <p className="text-sm font-medium cursor-pointer">Test Run</p>
+              )}
+              {location.pathname === "/" && (
                 <Separator orientation="vertical" className="mr-2 h-4" />
+              )}
+              {location.pathname === "/" && (
                 <Link
                   to="/"
                   className={`text-sm font-medium cursor-pointer ${
@@ -75,20 +80,23 @@ export default function Sidebar() {
                 >
                   Playground
                 </Link>
+              )}
+              {location.pathname === "/" && (
                 <Separator orientation="vertical" className="mr-2 h-4" />
+              )}
+              {location.pathname === "/" && (
                 <p className="text-sm font-medium cursor-pointer">
                   <Link
                     to="/live"
-                    className={`${
-                      active === "live" ? "text-[#9B8BF4]" : ""
-                    }`}
+                    className={`${active === "live" ? "text-[#9B8BF4]" : ""}`}
                     onClick={() => setActive("live")}
                   >
                     Live
                   </Link>
                 </p>
-              </div>
-            )}
+              )}
+            </div>
+
             {location.pathname === "/live" && (
               <div className="flex items-center">
                 <SidebarTrigger className="-ml-1" />
@@ -142,6 +150,7 @@ export default function Sidebar() {
           <div className="flex flex-1 flex-col gap-4">
             <Routes>
               <Route path="/" element={<Playground />} />
+              <Route path="/live" element={<Live />} />
               <Route path="/contract-library" element={<ContractLibrary />} />
               <Route path="/agent-response" element={<AgentResponse />} />
               <Route path="/contracts" element={<ContractsUI />} />
@@ -159,7 +168,7 @@ export default function Sidebar() {
                   element={<ZedActivity />}
                 />
               </Route>
-              <Route path="/live" element={<Live />} />
+              <Route path="/vendors" element={<Vendors />} />
             </Routes>
           </div>
         </SidebarInset>

@@ -16,7 +16,6 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { useContract } from "@/hooks/use-contract";
 import {
   ArrowDown,
   ArrowUpWideNarrow,
@@ -33,14 +32,110 @@ import {
 import { useState } from "react";
 import { Link } from "react-router";
 
-export default function ContractsUI() {
-  const { contract, filterContract, searchFilterContract } = useContract();
+const vendors = [
+  {
+    name: "Acme Corp",
+    type: "Client",
+    industry: "IT Services",
+    jurisdiction: "New York, USA",
+    status: "Active",
+    rating: 85,
+  },
+  {
+    name: "Greenfield Estates",
+    type: "Landlord",
+    industry: "Real Estate",
+    jurisdiction: "Ontario, Canada",
+    status: "Active",
+    rating: 90,
+  },
+  {
+    name: "Titan Supplies",
+    type: "Vendor",
+    industry: "Manufacturing",
+    jurisdiction: "Ontario, Canada",
+    status: "Approved",
+    rating: 80,
+  },
+  {
+    name: "Stellar Ventures",
+    type: "Partner",
+    industry: "Investment",
+    jurisdiction: "London, England",
+    status: "Negotiation",
+    rating: 75,
+  },
+  {
+    name: "Horizon Dynamics",
+    type: "Employee",
+    industry: "Technology",
+    jurisdiction: "New York, USA",
+    status: "Inactive",
+    rating: 60,
+  },
+  {
+    name: "Blue Ocean Logistics",
+    type: "Supplier",
+    industry: "Logistics",
+    jurisdiction: "California, USA",
+    status: "Active",
+    rating: 88,
+  },
+  {
+    name: "Sunrise Retailers",
+    type: "Distributor",
+    industry: "Retail",
+    jurisdiction: "Mumbai, India",
+    status: "Pending Approval",
+    rating: 70,
+  },
+  {
+    name: "Vertex Pharmaceuticals",
+    type: "Manufacturer",
+    industry: "Pharmaceuticals",
+    jurisdiction: "Berlin, Germany",
+    status: "Approved",
+    rating: 82,
+  },
+  {
+    name: "Global Finance Ltd",
+    type: "Financial Institution",
+    industry: "Banking",
+    jurisdiction: "Sydney, Australia",
+    status: "Active",
+    rating: 89,
+  },
+  {
+    name: "Zenith Automobiles",
+    type: "Partner",
+    industry: "Automotive",
+    jurisdiction: "Tokyo, Japan",
+    status: "Negotiation",
+    rating: 77,
+  },
+];
+
+export default function Vendors() {
   const [activeSorting, setActiveSorting] = useState<string>("View All");
+  const [vendor, setVendor] = useState(vendors);
+
+  // function to filter the vendor
+  function filterVendor(nameOrType: string) {
+    const filteredVendor = vendors.filter((vendor: any) => {
+      if (vendor.name.toLowerCase().includes(nameOrType.toLowerCase())) {
+        return vendor;
+      }
+      if (vendor.type.toLowerCase().includes(nameOrType.toLowerCase())) {
+        return vendor;
+      }
+    });
+    setVendor(filteredVendor);
+  }
 
   return (
     <div className="px-4 py-2 space-y-2">
       <div className="flex items-center gap-2">
-        <h1 className="text-base font-semibold">Contracts</h1>
+        <h1 className="text-base font-semibold">Vendors</h1>
       </div>
 
       <div className="flex items-center justify-between">
@@ -61,7 +156,7 @@ export default function ContractsUI() {
               <DropdownMenuItem
                 onClick={() => setActiveSorting("Recent Contracts")}
               >
-                Recent Contracts
+                Recent Vendors
                 <DropdownMenuShortcut>
                   <History />
                 </DropdownMenuShortcut>
@@ -69,7 +164,7 @@ export default function ContractsUI() {
               <DropdownMenuItem
                 onClick={() => setActiveSorting("Pinned Contracts")}
               >
-                Pinned Contracts
+                Pinned Vendors
                 <DropdownMenuShortcut>
                   <Pin />
                 </DropdownMenuShortcut>
@@ -87,8 +182,8 @@ export default function ContractsUI() {
         </DropdownMenu>
         <Input
           className="w-1/3"
-          placeholder="search contracts.."
-          onChange={(e) => searchFilterContract(e.target.value)}
+          placeholder="search vendors.."
+          onChange={(e) => filterVendor(e.target.value)}
         />
       </div>
 
@@ -112,17 +207,16 @@ export default function ContractsUI() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {contract?.map((file: any, index: any) => (
+          {vendor?.map((file: any, index: any) => (
             <TableRow key={index}>
               <TableCell className="py-1">
                 <div className="flex items-center gap-2 max-w-[200px] overflow-hidden">
                   <FileText size={14} className="text-gray-400 flex-shrink-0" />
                   <Link
-                    to={`/contract-dashboard/${file.contract_name}`}
+                    to="#"
                     className="truncate overflow-hidden text-ellipsis whitespace-nowrap"
-                    onClick={() => filterContract(file.contract_name)}
                   >
-                    {file.contract_name}
+                    {file.name}
                   </Link>
                 </div>
               </TableCell>
@@ -154,14 +248,8 @@ export default function ContractsUI() {
                     <DropdownMenuItem className="cursor-pointer">
                       <FileText /> View Document
                     </DropdownMenuItem>
-                    <DropdownMenuItem
-                      className="cursor-pointer"
-                      onClick={() => filterContract(file.contract_name)}
-                    >
-                      <Link
-                        to={`/contract-dashboard/${file.contract_name}`}
-                        className="flex items-center gap-2"
-                      >
+                    <DropdownMenuItem className="cursor-pointer">
+                      <Link to="#" className="flex items-center gap-2">
                         <LayoutDashboard /> Go To Dashboard
                       </Link>
                     </DropdownMenuItem>

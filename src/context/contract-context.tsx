@@ -8,6 +8,7 @@ interface contractContextProps {
   filterContract: (contratTitle: string) => void;
   activeChat: Chat | any;
   filterZedHistory: (title: string) => void;
+  searchFilterContract: (titleOrType: string) => void;
 }
 
 export const ContractContext = createContext<contractContextProps | undefined>(
@@ -58,6 +59,21 @@ export const ContractContextProvider = ({ children }: contextProviderProps) => {
     setActiveChat({ ...chat });
   }
 
+  // function to filter the contract based on the contract-name and contract type
+  function searchFilterContract(titleOrType: string) {
+    const filteredContract = contracts.filter((cont) => {
+      if (
+        cont.contract_name.toLowerCase().includes(titleOrType.toLowerCase())
+      ) {
+        return cont;
+      }
+      if (cont.type.toLowerCase().includes(titleOrType.toLowerCase())) {
+        return cont;
+      }
+    });
+    setContract(filteredContract);
+  }
+
   return (
     <ContractContext.Provider
       value={{
@@ -66,6 +82,7 @@ export const ContractContextProvider = ({ children }: contextProviderProps) => {
         filterContract,
         activeChat,
         filterZedHistory,
+        searchFilterContract,
       }}
     >
       {children}
