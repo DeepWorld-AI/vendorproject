@@ -6,12 +6,24 @@ import {
   Bot,
   Check,
   ChevronUp,
+  MessageCircleReply,
+  MessageSquarePlus,
   MessagesSquare,
   Paperclip,
+  Plus,
   RefreshCcwDot,
   Shuffle,
   Sparkles,
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router";
 import {
   Popover,
@@ -20,12 +32,7 @@ import {
 } from "@/components/ui/popover";
 import React from "react";
 import { cn } from "@/lib/utils";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import OlderChats from "./older-chats";
 
 const ChatWithZed = () => {
   const [open, setOpen] = React.useState(false);
@@ -59,8 +66,8 @@ const ChatWithZed = () => {
   const decodedURL = decodeURIComponent(location.pathname);
 
   return (
-    <div className="text-sm relative">
-      <div className="border-b z-40 h-14 px-2 flex justify-between items-center">
+    <div className="flex flex-col h-[calc(100vh-4rem)]">
+      <div className="border-b h-14 px-2 flex justify-between items-center">
         <h1 className="flex items-center gap-2 font-semibold">
           <Sparkles
             className="-rotate-90 cursor-pointer"
@@ -72,71 +79,78 @@ const ChatWithZed = () => {
           />{" "}
           {active}
         </h1>
-        <div className="flex items-center gap-x-3 text-gray-500 p-2">
+        <div className="flex items-center text-gray-500 p-2">
           <div
-            className={`p-1.5 rounded-md hover:bg-gray-100 cursor-pointer ${
+            className={`p-1.5 rounded-md cursor-pointer ${
               decodedURL === `/contract-dashboard/${contractName}/zed-history`
-                ? "bg-gray-100"
+                ? ""
                 : ""
             }`}
           >
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <MessagesSquare
-                    size={18}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" className="h-8 border text-xs">
+                  <MessagesSquare size={18} />
+                  Chat
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuGroup>
+                  <DropdownMenuItem
+                    className="cursor-pointer"
                     onClick={() => {
                       navigate(
                         `/contract-dashboard/${contractName}/zed-history`
                       );
                       setActive("Zed History");
                     }}
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Chat With ZED</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+                  >
+                    <Plus /> New Chat
+                    <DropdownMenuShortcut>
+                      <MessageSquarePlus />
+                    </DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <div>
+                    <div className="flex justify-between items-center px-2 py-1">
+                      <p className="text-sm">Older Conversation</p>
+                      <MessageCircleReply size={16} className="text-gray-500" />
+                    </div>
+                    <OlderChats />
+                  </div>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
           <div
-            className={`relative p-1.5 rounded-md hover:bg-gray-100 cursor-pointer ${
+            className={`relative p-1.5 rounded-md cursor-pointer ${
               decodedURL === `/contract-dashboard/${contractName}/zed-activity`
-                ? "bg-gray-100"
+                ? ""
                 : ""
             }`}
           >
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Bot
-                    size={18}
-                    onClick={() => {
-                      navigate(
-                        `/contract-dashboard/${contractName}/zed-activity`
-                      );
-                      setActive("Zed Activity");
-                    }}
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Zed Activity</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-
-            <div className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500"></div>
+            <Button
+              variant="outline"
+              className="h-8 text-xs"
+              onClick={() => {
+                navigate(`/contract-dashboard/${contractName}/zed-activity`);
+                setActive("Zed Activity");
+              }}
+            >
+              <Bot size={18} />
+              ZED History
+            </Button>
           </div>
         </div>
       </div>
 
-      <div className="overflow-y-auto pb-10 h-[450px]">
+      <div className="flex-1 overflow-y-auto pb-10">
         <Outlet />
       </div>
 
       {/* chat-box with zed */}
-      <div className="absolute bottom-0 z-40 w-full bg-white/60 backdrop-blur-sm">
-        <div className="rounded-md m-3">
+      <div className="z-40 w-full bg-white px-2 h-30">
+        <div className="rounded-md my-2">
           <AnimatedGradientBorderTW className="flex flex-col pb-3">
             <Input
               type="text"

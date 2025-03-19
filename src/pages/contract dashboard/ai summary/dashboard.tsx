@@ -14,26 +14,28 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex justify-between px-2 h-14 items-center border-b">
-        {all_btn.map((btn) => (
-          <Button
-            variant="ghost"
-            className={`h-7 px-8 rounded-full ${
-              active.toLowerCase() === btn.name.toLowerCase()
-                ? "bg-purple-100 text-purple-600"
-                : ""
-            }`}
-            key={btn.id}
-            onClick={() => setActive(btn.name)}
-          >
-            {btn.name}
-          </Button>
-        ))}
-      </div>
+      <div className="flex flex-col h-[calc(100vh-4rem)]">
+        <div className="flex justify-between items-center h-14 border-b px-1">
+          {all_btn.map((btn) => (
+            <Button
+              variant="ghost"
+              className={`h-7 rounded-full text-sm ${
+                active.toLowerCase() === btn.name.toLowerCase()
+                  ? "bg-purple-100 text-purple-600"
+                  : ""
+              }`}
+              key={btn.id}
+              onClick={() => setActive(btn.name)}
+            >
+              {btn.name}
+            </Button>
+          ))}
+        </div>
 
-      <div className="p-3 h-[600px] overflow-y-auto">
-        {active.toLowerCase() === "ai summary" && <AiSummary />}
-        {active.toLowerCase() === "document" && <DocumentViewer />}
+        <div className="p-3 overflow-y-auto">
+          {active.toLowerCase() === "ai summary" && <AiSummary />}
+          {active.toLowerCase() === "document" && <DocumentViewer />}
+        </div>
       </div>
     </>
   );

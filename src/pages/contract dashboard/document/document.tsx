@@ -104,7 +104,7 @@ const DocumentViewer: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center p- relative">
+    <div className="flex flex-col items-center relative">
       <input
         type="file"
         accept=".pdf,.docx,.txt"
@@ -141,7 +141,10 @@ const DocumentViewer: React.FC = () => {
           </div>
         </div>
       ) : textPages.length > 0 ? (
-        <div className="scroll-container border p-4 shadow-md w-[600px] h-[550px] overflow-y-auto rounded-md scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+        <div
+          className="border p-4 shadow-md overflow-y-auto rounded-md scrollbar-thin scrollbar-thumb-gray-400
+         scrollbar-track-gray-200"
+        >
           <div
             dangerouslySetInnerHTML={{ __html: textPages[currentPage - 1] }}
           />

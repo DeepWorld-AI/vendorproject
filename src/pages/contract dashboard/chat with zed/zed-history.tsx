@@ -4,8 +4,9 @@ const ZedHistory = () => {
       <div className="text-center">
         <h1 className="text-3xl font-bold text-gray-800">Hi there !!</h1>
         <h2 className="text-2xl font-semibold text-purple-500 mt-2">
-          What would you like to manage?
+          How can I assist you with your contract ?
         </h2>
+
         <p className="text-gray-500 mt-2">
           Use one of the common contract actions below or start with your own
           query.

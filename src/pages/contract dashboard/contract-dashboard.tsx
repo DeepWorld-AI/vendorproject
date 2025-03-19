@@ -1,18 +1,23 @@
 import ChatWithZed from "./chat with zed/chat-zed";
 import Dashboard from "./ai summary/dashboard";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 const ContractDashboard = () => {
   return (
     <>
-      <div className="flex h-[calc(100vh-4rem)] w-full">
-        <div className="w-1/2 border-r h-full">
+      <ResizablePanelGroup direction="horizontal" className="min-h-[200px]">
+        <ResizablePanel defaultSize={50}>
           <ChatWithZed />
-        </div>
-
-        <div className="w-1/2 h-full">
+        </ResizablePanel>
+        <ResizableHandle withHandle />
+        <ResizablePanel defaultSize={50}>
           <Dashboard />
-        </div>
-      </div>
+        </ResizablePanel>
+      </ResizablePanelGroup>
     </>
   );
 };
