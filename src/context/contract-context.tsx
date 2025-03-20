@@ -67,9 +67,6 @@ export const ContractContextProvider = ({ children }: contextProviderProps) => {
       ) {
         return cont;
       }
-      if (cont.type.toLowerCase().includes(titleOrType.toLowerCase())) {
-        return cont;
-      }
     });
     setContract(filteredContract);
   }
