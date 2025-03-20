@@ -1,13 +1,6 @@
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Table,
   TableHeader,
@@ -16,165 +9,131 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
+import { Pin, Filter, Tags, ChevronRight } from "lucide-react";
 import { useContract } from "@/hooks/use-contract";
-import {
-  ArrowDown,
-  ArrowUpWideNarrow,
-  FileStack,
-  FileText,
-  History,
-  LayoutDashboard,
-  MoreVertical,
-  NotebookText,
-  Pin,
-  Star,
-  Trash2,
-} from "lucide-react";
-import { useState } from "react";
+import { pinnedContracts } from "@/json data/contracts";
 import { Link } from "react-router";
 
 export default function ContractsUI() {
   const { contract, filterContract, searchFilterContract } = useContract();
-  const [activeSorting, setActiveSorting] = useState<string>("View All");
-
   return (
-    <div className="px-4 py-2 space-y-2">
-      <div className="flex items-center gap-2">
-        <h1 className="text-base font-semibold">Contracts</h1>
-      </div>
-
-      <div className="flex items-center justify-between">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="secondary" className="text-xs">
-              <ArrowUpWideNarrow /> Sort By : {activeSorting}
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56">
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                View All
-                <DropdownMenuShortcut>
-                  <FileStack />
-                </DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={() => setActiveSorting("Recent Contracts")}
-              >
-                Recent Contracts
-                <DropdownMenuShortcut>
-                  <History />
-                </DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={() => setActiveSorting("Pinned Contracts")}
-              >
-                Pinned Contracts
-                <DropdownMenuShortcut>
-                  <Pin />
-                </DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={() => setActiveSorting("My Favourite")}
-              >
-                My Favourite
-                <DropdownMenuShortcut>
-                  <Star />
-                </DropdownMenuShortcut>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+    <div className="p-4 space-y-8">
+      {/* Search and Filter */}
+      <div className="flex justify-center items-center gap-2">
         <Input
+          placeholder="Search Contracts"
           className="w-1/3"
-          placeholder="search contracts.."
           onChange={(e) => searchFilterContract(e.target.value)}
         />
+        <Button variant="outline" className="flex items-center gap-2">
+          <Filter size={16} /> Filter
+        </Button>
       </div>
 
-      <Table className="border">
-        <TableHeader className="bg-gray-50">
-          <TableRow>
-            <TableHead>
-              <div className="flex items-center gap-1">
-                Contract <ArrowDown size={14} className="cursor-pointer" />
-              </div>
-            </TableHead>
-            <TableHead>
-              <div className="flex items-center gap-1">
-                Type <ArrowDown size={14} className="cursor-pointer" />
-              </div>
-            </TableHead>
-
-            <TableHead>Status</TableHead>
-            <TableHead>Recent Updates</TableHead>
-            <TableHead>Actions</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {contract?.map((file: any, index: any) => (
-            <TableRow key={index}>
-              <TableCell className="py-1">
-                <div className="flex items-center gap-2 max-w-[200px] overflow-hidden">
-                  <FileText size={14} className="text-gray-400 flex-shrink-0" />
-                  <Link
-                    to={`/contract-dashboard/${file.contract_name}`}
-                    className="truncate overflow-hidden text-ellipsis whitespace-nowrap"
-                    onClick={() => filterContract(file.contract_name)}
-                  >
-                    {file.contract_name}
-                  </Link>
+      {/* Pinned and Collections */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              className="flex items-center gap-2 h-8 bg-purple-600 text-white text-xs"
+            >
+              <Pin className="rotate-45 w-2 h-2" /> Pinned
+            </Button>
+            <Button
+              variant="outline"
+              className="flex items-center gap-2 h-8 text-xs"
+            >
+              <Tags className="rotate-90" />
+              Collections
+            </Button>
+          </div>
+          <Button
+            variant="ghost"
+            className="text-purple-600 text-xs font-semibold hover:bg-transparent"
+          >
+            <Link to="/all-contracts" className="flex items-center">
+              View All <ChevronRight />
+            </Link>
+          </Button>
+        </div>
+        <div className="grid grid-cols-5 gap-2">
+          {pinnedContracts.map((item, i) => (
+            <Card key={i}>
+              <CardContent className="p-3">
+                <div className="flex gap-3">
+                  <span className="mt-1 text-gray-500">{item.icon}</span>
+                  <div className="space-y-2">
+                    <p className="font-semibold text-sm">{item.title}</p>
+                    <p className="text-xs text-gray-500">{item.subtitle}</p>
+                  </div>
                 </div>
-              </TableCell>
-
-              <TableCell className="py-1">{file.type}</TableCell>
-              <TableCell className="text-blue-500 py-1">
-                {/* <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">
-                  {file.status}
-                </span> */}
-                -
-              </TableCell>
-              <TableCell className="py-1">
-                <p className="text-gray-400 truncate overflow-hidden whitespace-nowrap text-ellipsis max-w-[150px]">
-                  random changes / updates
-                </p>
-              </TableCell>
-
-              <TableCell className="py-1">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon">
-                      <MoreVertical />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-[200px]">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <NotebookText /> View Report
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer">
-                      <FileText /> View Document
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      className="cursor-pointer"
-                      onClick={() => filterContract(file.contract_name)}
-                    >
-                      <Link
-                        to={`/contract-dashboard/${file.contract_name}`}
-                        className="flex items-center gap-2"
-                      >
-                        <LayoutDashboard /> Go To Dashboard
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="text-red-500 cursor-pointer">
-                      <Trash2 /> Delete
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </TableCell>
-            </TableRow>
+              </CardContent>
+            </Card>
           ))}
-        </TableBody>
-      </Table>
+        </div>
+      </div>
+
+      {/* Suggested Contracts Table */}
+      <div className="">
+        <div className="flex justify-between">
+          <h2 className="text-xl font-semibold">Suggested Contracts</h2>
+          <Button
+            variant="ghost"
+            className="text-purple-600 text-xs font-semibold hover:bg-transparent"
+          >
+            <Link to="/all-contracts" className="flex items-center">
+              View All <ChevronRight />
+            </Link>
+          </Button>
+        </div>
+        <Table className="border">
+          <TableHeader className="rounded-md bg-gray-100">
+            <TableRow>
+              <TableHead className="text-black font-semibold border-r">
+                Name
+              </TableHead>
+              <TableHead className="text-black font-semibold border-r">
+                Category
+              </TableHead>
+              <TableHead className="text-black font-semibold border-r">
+                Last Accessed
+              </TableHead>
+              <TableHead className="text-black font-semibold border-r">
+                Status
+              </TableHead>
+              <TableHead className="text-black font-semibold border-r">
+                User Activity
+              </TableHead>
+              <TableHead className="text-black font-semibold">
+                Zed Activity
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {contract.map((contract: any, index: any) => (
+              <TableRow key={index}>
+                <TableCell>
+                  <Link
+                    to={`/contract-dashboard/${contract.contract_name}`}
+                    className="truncate overflow-hidden text-ellipsis whitespace-nowrap"
+                    onClick={() => filterContract(contract.contract_name)}
+                  >
+                    {contract.contract_name}
+                  </Link>
+                </TableCell>
+                <TableCell>{contract.category}</TableCell>
+                <TableCell>{contract.lastAccessed}</TableCell>
+                <TableCell>{contract.status}</TableCell>
+                <TableCell>{contract.userActivity}</TableCell>
+                <TableCell className="truncate whitespace-nowrap overflow-hidden max-w-[200px]">
+                  {contract.zedActivity}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 }

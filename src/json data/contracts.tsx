@@ -1,3 +1,5 @@
+import { FileText, Tag } from "lucide-react";
+
 interface Message {
   role: "customer" | "agent";
   text: string;
@@ -12,10 +14,11 @@ export interface Chat {
 export const contracts = [
   {
     contract_name: "Software Service (SaaS) Agreements",
-    type: "Master Services Agreement",
-    role: "Client",
-    jurisdiction: "New York, USA",
-    status: "Signed",
+    category: "NDAs",
+    lastAccessed: "2025-03-12",
+    status: "Active",
+    userActivity: "Viewed by Stakeholder A",
+    zedActivity: "Sent reminder email to stakeholder for review",
     ai_summary: [
       {
         title: "Risk",
@@ -250,10 +253,11 @@ export const contracts = [
   },
   {
     contract_name: "Dealer Portal Development Agreement",
-    type: "Commercial Lease",
-    role: "Landlord",
-    jurisdiction: "Ontario, Canada",
+    category: "NDAs",
+    lastAccessed: "2025-03-10",
     status: "Active",
+    userActivity: "Internal review by Legal",
+    zedActivity: "Auto-categorized as NDA",
     ai_summary: [
       {
         title: "Financial & Commercial",
@@ -426,10 +430,11 @@ export const contracts = [
   },
   {
     contract_name: "Software Development Agreements",
-    type: "Vendor Agreement",
-    role: "Vendor",
-    jurisdiction: "Ontario, Canada",
-    status: "Approved",
+    category: "Vendor Agreements",
+    lastAccessed: "2025-03-11",
+    status: "Expiring Soon",
+    userActivity: "Opened by Procurement",
+    zedActivity: "Sent renewal notice to Finance",
     ai_summary: [
       {
         title: "Risk",
@@ -607,5 +612,58 @@ export const contracts = [
       ],
     },
     zed_history: [],
+  },
+];
+
+export const pinnedContracts = [
+  {
+    title: "Acme Corp – NDA – 2025",
+    subtitle: "Collection Name",
+    icon: <FileText size={16} />,
+  },
+  {
+    title: "GlobalTech – Software Procurement",
+    subtitle: "Collection Name",
+    icon: <FileText size={16} />,
+  },
+  {
+    title: "Non-Disclosure Agreements (NDAs)",
+    subtitle: "16 Contracts",
+    icon: <Tag size={16} />,
+  },
+  {
+    title: "Legal – SaaS Master Agreement – Fintech",
+    subtitle: "Collection Name",
+    icon: <FileText size={16} />,
+  },
+  {
+    title: "Employment Contracts",
+    subtitle: "16 Contracts",
+    icon: <Tag size={16} />,
+  },
+  {
+    title: "Vendor-004512 – Service Level Agreement",
+    subtitle: "Collection Name",
+    icon: <FileText size={16} />,
+  },
+  {
+    title: "HR – Employee Stock Option Agreement",
+    subtitle: "Collection Name",
+    icon: <FileText size={16} />,
+  },
+  {
+    title: "Service-Level Agreements (SLAs)",
+    subtitle: "16 Contracts",
+    icon: <Tag size={16} />,
+  },
+  {
+    title: "Zed AI – Compliance Review Memo – March",
+    subtitle: "Collection Name",
+    icon: <FileText size={16} />,
+  },
+  {
+    title: "Lease & Rental Contracts",
+    subtitle: "16 Contracts",
+    icon: <Tag size={16} />,
   },
 ];

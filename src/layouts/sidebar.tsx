@@ -40,6 +40,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import AllContracts from "@/pages/contracts/all-contracts";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -180,6 +181,7 @@ export default function Sidebar() {
               <Route path="/contract-library" element={<ContractLibrary />} />
               <Route path="/agent-response" element={<AgentResponse />} />
               <Route path="/contracts" element={<ContractsUI />} />
+              <Route path="/all-contracts" element={<AllContracts />} />
               <Route
                 path="/contract-dashboard/:contractName"
                 element={<ContractDashboard />}

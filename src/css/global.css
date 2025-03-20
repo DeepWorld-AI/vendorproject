@@ -5,15 +5,21 @@ body {
   font-style: normal;
 }
 
-/* ::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar {
   display: none;
-} */
+}
 
-::-webkit-scrollbar {
+.custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
-::-webkit-scrollbar-thumb {
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #c8cacd;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .bg-gradiet {
