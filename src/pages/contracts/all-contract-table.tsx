@@ -46,8 +46,8 @@ const AllContractTable = ({ currentContracts }: tableProps) => {
                 <tbody className="mb-10">
                   {currentContracts.map((contract: any, index: any) => (
                     <tr key={index} className="border-b">
-                      <td className="py-2 px-4 text-sm">{index + 1}</td>
-                      <td className="truncate whitespace-nowrap py-2 px-4 text-sm">
+                      <td className="py-3 px-4 text-sm">{index + 1}</td>
+                      <td className="truncate whitespace-nowrap py-3 px-4 text-sm">
                         <Link
                           to={`/contract-dashboard/${contract.name}`}
                           className="truncate overflow-hidden text-ellipsis whitespace-nowrap"
@@ -56,21 +56,21 @@ const AllContractTable = ({ currentContracts }: tableProps) => {
                           {contract.name}
                         </Link>
                       </td>
-                      <td className="py-2 px-4 min-w-[150px] truncate whitespace-nowrap overflow-hidden text-sm">
+                      <td className="py-3 px-4 min-w-[150px] truncate whitespace-nowrap overflow-hidden text-sm">
                         {contract.category}
                       </td>
-                      <td className="py-2 px-4 text-sm">{contract.parties}</td>
-                      <td className="py-2 px-4 text-sm">
+                      <td className="py-3 px-4 text-sm">{contract.parties}</td>
+                      <td className="py-3 px-4 text-sm">
                         {contract.lastAccessed}
                       </td>
-                      <td className="py-2 px-4 text-sm">{contract.status}</td>
-                      <td className="py-2 px-4 text-sm">
+                      <td className="py-3 px-4 text-sm">{contract.status}</td>
+                      <td className="py-3 px-4 text-sm">
                         {contract.effectiveDate}
                       </td>
-                      <td className="py-2 px-4 text-sm">
+                      <td className="py-3 px-4 text-sm">
                         {contract.expirationDate}
                       </td>
-                      <td className="py-2 px-4 text-sm ">
+                      <td className="py-3 px-4 text-sm ">
                         {contract.userAction}
                       </td>
                     </tr>
