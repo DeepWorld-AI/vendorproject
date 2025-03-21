@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Table,
   TableHeader,
@@ -11,11 +10,14 @@ import {
 } from "@/components/ui/table";
 import { Pin, Filter, Tags, ChevronRight } from "lucide-react";
 import { useContract } from "@/hooks/use-contract";
-import { pinnedContracts } from "@/json data/contracts";
 import { Link } from "react-router";
+import { useState } from "react";
+import PinnedContracts from "./pinned/pinned-contracts";
+import Collections from "./collections/collections";
 
 export default function ContractsUI() {
   const { contract, filterContract, searchFilterContract } = useContract();
+  const [contractFolder, setContractFolder] = useState<string>("pinned");
   return (
     <div className="p-4 space-y-8">
       {/* Search and Filter */}
@@ -36,42 +38,40 @@ export default function ContractsUI() {
           <div className="flex gap-2">
             <Button
               variant="outline"
-              className="flex items-center gap-2 h-8 bg-purple-600 text-white text-xs"
+              className={`flex items-center gap-2 h-8 text-xs ${
+                contractFolder === "pinned" ? "bg-purple-500 text-white" : ""
+              }`}
+              onClick={() => setContractFolder("pinned")}
             >
-              <Pin className="rotate-45 w-2 h-2" /> Pinned
+              <Pin className="rotate-45 w-3 h-3" /> Pinned
             </Button>
             <Button
               variant="outline"
-              className="flex items-center gap-2 h-8 text-xs"
+              className={`flex items-center gap-2 h-8 text-xs ${
+                contractFolder === "collections"
+                  ? "bg-purple-500 text-white"
+                  : ""
+              }`}
+              onClick={() => setContractFolder("collections")}
             >
-              <Tags className="rotate-90" />
+              <Tags className="rotate-90 w-4 h-4" />
               Collections
             </Button>
           </div>
-          <Button
-            variant="ghost"
-            className="text-purple-600 text-xs font-semibold hover:bg-transparent"
-          >
-            <Link to="/all-contracts" className="flex items-center">
-              View All <ChevronRight />
-            </Link>
-          </Button>
+          {contractFolder === "collections" && (
+            <Button
+              variant="ghost"
+              className="text-purple-500 text-xs font-semibold hover:bg-transparent"
+            >
+              <Link to="/all-collections" className="flex items-center">
+                View All <ChevronRight />
+              </Link>
+            </Button>
+          )}
         </div>
-        <div className="grid grid-cols-5 gap-2">
-          {pinnedContracts.map((item, i) => (
-            <Card key={i}>
-              <CardContent className="p-3">
-                <div className="flex gap-3">
-                  <span className="mt-1 text-gray-500">{item.icon}</span>
-                  <div className="space-y-2">
-                    <p className="font-semibold text-sm">{item.title}</p>
-                    <p className="text-xs text-gray-500">{item.subtitle}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+
+        {contractFolder === "pinned" && <PinnedContracts />}
+        {contractFolder === "collections" && <Collections />}
       </div>
 
       {/* Suggested Contracts Table */}
@@ -80,7 +80,7 @@ export default function ContractsUI() {
           <h2 className="text-xl font-semibold">Suggested Contracts</h2>
           <Button
             variant="ghost"
-            className="text-purple-600 text-xs font-semibold hover:bg-transparent"
+            className="text-purple-500 text-xs font-semibold hover:bg-transparent"
           >
             <Link to="/all-contracts" className="flex items-center">
               View All <ChevronRight />

@@ -617,53 +617,134 @@ export const contracts = [
 
 export const pinnedContracts = [
   {
+    icon: <FileText className="w-8 h-8 text-gray-500" />,
     title: "Acme Corp – NDA – 2025",
-    subtitle: "Collection Name",
-    icon: <FileText size={16} />,
+    subtitle: "Client Agreements",
+    labels: [
+      { text: "Client Agreements", color: "bg-orange-200 text-orange-700" },
+      { text: "NDAs", color: "bg-red-200 text-red-700" },
+    ],
   },
   {
-    title: "GlobalTech – Software Procurement",
-    subtitle: "Collection Name",
-    icon: <FileText size={16} />,
+    icon: <FileText className="w-8 h-8 text-gray-500" />,
+    title: "GlobalTech – Software Procurement – Q1 2025",
+    subtitle: "EU Compliance",
+    labels: [
+      { text: "EU Compliance", color: "bg-green-200 text-green-700" },
+      { text: "Sole Source", color: "bg-blue-200 text-blue-700" },
+    ],
   },
   {
-    title: "Non-Disclosure Agreements (NDAs)",
-    subtitle: "16 Contracts",
-    icon: <Tag size={16} />,
+    icon: <Tag className="w-8 h-8 text-gray-500" />,
+    title: "Strategic Vendors",
+    subtitle: "21 Contracts",
+    labels: [],
   },
   {
-    title: "Legal – SaaS Master Agreement – Fintech",
-    subtitle: "Collection Name",
-    icon: <FileText size={16} />,
+    icon: <FileText className="w-8 h-8 text-gray-500" />,
+    title: "Legal – SaaS Master Agreement – Fintech Exp...",
+    subtitle: "SaaS Agreements",
+    labels: [
+      { text: "SaaS Agreements", color: "bg-green-200 text-green-700" },
+      { text: "4+", color: "bg-purple-200 text-purple-700" },
+    ],
   },
   {
+    icon: <FileText className="w-8 h-8 text-gray-500" />,
     title: "Employment Contracts",
     subtitle: "16 Contracts",
-    icon: <Tag size={16} />,
+    labels: [],
   },
   {
-    title: "Vendor-004512 – Service Level Agreement",
-    subtitle: "Collection Name",
-    icon: <FileText size={16} />,
-  },
-  {
-    title: "HR – Employee Stock Option Agreement",
-    subtitle: "Collection Name",
-    icon: <FileText size={16} />,
-  },
-  {
+    icon: <Tag className="w-8 h-8 text-gray-500" />,
     title: "Service-Level Agreements (SLAs)",
-    subtitle: "16 Contracts",
-    icon: <Tag size={16} />,
+    subtitle: "28 Contracts",
+    labels: [],
   },
   {
-    title: "Zed AI – Compliance Review Memo – March",
-    subtitle: "Collection Name",
-    icon: <FileText size={16} />,
+    icon: <FileText className="w-8 h-8 text-gray-500" />,
+    title: "Vendor-004512 – Service Level Agreement",
+    subtitle: "",
+    labels: [
+      { text: "SLAs", color: "bg-red-200 text-red-700" },
+      { text: "3+", color: "bg-purple-200 text-purple-700" },
+    ],
   },
   {
+    icon: <FileText className="w-8 h-8 text-gray-500" />,
+    title: "HR – Employee Stock Option Agreement",
+    subtitle: "",
+    labels: [
+      { text: "HR Agreements", color: "bg-blue-200 text-blue-700" },
+      { text: "2+", color: "bg-purple-200 text-purple-700" },
+    ],
+  },
+  {
+    icon: <Tag className="w-8 h-8 text-gray-500" />,
     title: "Lease & Rental Contracts",
+    subtitle: "8 Contracts",
+    labels: [],
+  },
+  {
+    icon: <FileText className="w-8 h-8 text-gray-500" />,
+    title: "Zed AI – Compliance Review Memo – Mar 2025",
+    subtitle: "",
+    labels: [
+      { text: "Compliance", color: "bg-yellow-200 text-yellow-700" },
+      { text: "2+", color: "bg-purple-200 text-purple-700" },
+    ],
+  },
+];
+
+export const collections = [
+  {
+    icon: <Tag />,
+    title: "Strategic Vendors",
+    subtitle: "21 Contracts",
+  },
+  {
+    icon: <Tag />,
+    title: "Confidential",
     subtitle: "16 Contracts",
-    icon: <Tag size={16} />,
+  },
+  {
+    icon: <Tag />,
+    title: "Logistics",
+    subtitle: "16 Contracts",
+  },
+  {
+    icon: <Tag />,
+    title: "Outsourced Vendor",
+    subtitle: "36 Contracts",
+  },
+  {
+    icon: <Tag />,
+    title: "Subcontractor",
+    subtitle: "12 Contracts",
+  },
+  {
+    icon: <Tag />,
+    title: "Supplier Diversity",
+    subtitle: "18 Contracts",
+  },
+  {
+    icon: <Tag />,
+    title: "High-Performance",
+    subtitle: "7 Contracts",
+  },
+  {
+    icon: <Tag />,
+    title: "Innovation",
+    subtitle: "1 Contract",
+  },
+  {
+    icon: <Tag />,
+    title: "Sole Source",
+    subtitle: "10 Contracts",
+  },
+  {
+    icon: <Tag />,
+    title: "EU Compliance",
+    subtitle: "22 Contracts",
   },
 ];

@@ -41,6 +41,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import AllContracts from "@/pages/contracts/all-contracts";
+import AllCollections from "@/pages/contracts/collections/all-collections";
+import SingleCollectionContracts from "@/pages/contracts/collections/singleCollection-contract";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -182,6 +184,11 @@ export default function Sidebar() {
               <Route path="/agent-response" element={<AgentResponse />} />
               <Route path="/contracts" element={<ContractsUI />} />
               <Route path="/all-contracts" element={<AllContracts />} />
+              <Route path="/all-collections" element={<AllCollections />} />
+              <Route
+                path="/single-collection-contracts/:contractName"
+                element={<SingleCollectionContracts />}
+              />
               <Route
                 path="/contract-dashboard/:contractName"
                 element={<ContractDashboard />}
