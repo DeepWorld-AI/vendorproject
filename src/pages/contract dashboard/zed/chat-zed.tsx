@@ -85,6 +85,19 @@ const ChatWithZed = () => {
 
   // Function to submit prompt and simulate response loading
   function handleSubmit() {
+    if (!location.pathname.includes("chat")) {
+      navigate(`/contract-dashboard/${contractName}/chat`);
+
+      // Wait briefly to ensure the route changes before continuing
+      setTimeout(() => processInput(), 100);
+      return;
+    }
+
+    // If already on chat page, process input immediately
+    processInput();
+  }
+
+  function processInput() {
     if (!inputValue.trim()) return;
 
     if (!activeChat) {
