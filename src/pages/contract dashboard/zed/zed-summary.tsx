@@ -14,7 +14,7 @@ const ZedSummary = () => {
 
   return (
     <div className="zed-summary text-sm p-1">
-      <div className="relative w-full overflow-hidden rounded-md border p-1 flex items-center">
+      <div className="relative w-auto overflow-hidden rounded-md border p-1 flex items-center">
         <div
           className={`flex items-center whitespace-nowrap transition-all duration-300 z-10 ${
             expanded ? "overflow-visible" : "animate-marquee"
@@ -49,16 +49,16 @@ const ZedSummary = () => {
       </div>
 
       {/* Follow-Up Questions */}
-      <div className="flex flex-col gap-2 p-2 absolute bottom-32">
+      <div className="flex flex-col gap-2 py-2">
         <Fade delay={500} cascade triggerOnce>
           {filteredContract.zed_summary?.followUpQuestions?.map(
             (question: any) => (
               <p
                 key={question.id}
-                className="inline-flex items-center gap-2 border rounded font-medium px-4 py-2 w-fit text-gray-500
+                className="inline-flex items-center text-xs gap-2 border rounded font-medium px-4 py-2 w-fit text-gray-500
                 hover:border-black cursor-pointer hover:text-black/70"
               >
-                {question.question} <MoveUpRight size={16} />
+                {question.question} <MoveUpRight size={12} />
               </p>
             )
           )}

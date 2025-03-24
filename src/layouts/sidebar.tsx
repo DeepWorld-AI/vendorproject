@@ -11,9 +11,9 @@ import ContractLibrary from "@/pages/contract-library";
 import { useEffect, useState } from "react";
 import AgentResponse from "@/pages/agent-response";
 import ContractDashboard from "@/pages/contract dashboard/contract-dashboard";
-import ZedSummary from "@/pages/contract dashboard/chat with zed/zed-summary";
-import ZedHistory from "@/pages/contract dashboard/chat with zed/zed-history";
-import ZedActivity from "@/pages/contract dashboard/chat with zed/zed-activity";
+import ZedSummary from "@/pages/contract dashboard/zed/zed-summary";
+import ChatWithZed from "@/pages/contract dashboard/zed/chat";
+import ZedActivity from "@/pages/contract dashboard/zed/zed-activity";
 import { Input } from "@/components/ui/input";
 import {
   CircleAlert,
@@ -43,6 +43,7 @@ import {
 import AllContracts from "@/pages/contracts/all-contracts";
 import AllCollections from "@/pages/contracts/collections/all-collections";
 import SingleCollectionContracts from "@/pages/contracts/collections/singleCollection-contract";
+import ZedHistory from "@/pages/contract dashboard/zed/zed-history";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -195,12 +196,16 @@ export default function Sidebar() {
               >
                 <Route index element={<ZedSummary />} />
                 <Route
-                  path="/contract-dashboard/:contractName/zed-history"
-                  element={<ZedHistory />}
+                  path="/contract-dashboard/:contractName/chat"
+                  element={<ChatWithZed />}
                 />
                 <Route
                   path="/contract-dashboard/:contractName/zed-activity"
                   element={<ZedActivity />}
+                />
+                <Route
+                  path="/contract-dashboard/:contractName/zed-history"
+                  element={<ZedHistory />}
                 />
               </Route>
               <Route path="/vendors" element={<Vendors />} />

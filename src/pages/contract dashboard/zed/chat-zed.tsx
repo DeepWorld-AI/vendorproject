@@ -6,6 +6,7 @@ import {
   Bot,
   Check,
   ChevronUp,
+  History,
   MessageCircleReply,
   MessageSquarePlus,
   MessagesSquare,
@@ -30,14 +31,26 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import OlderChats from "./older-chats";
+import ZedActions from "./zed-actions";
+import { useChats } from "@/hooks/use-chats";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+} from "@/components/ui/select";
 
 const ChatWithZed = () => {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
-  const [active, setActive] = React.useState<string>("Ask Zed");
+  const { activeChat, createChat, addMessage, setActiveChat } = useChats();
+  const [inputValue, setInputValue] = useState<string>("");
+  const [select, setSelect] = useState<string>("zed-activity");
+  const [open, setOpen] = useState<boolean>(false);
+  const [value, setValue] = useState<string>("");
+  const [active, setActive] = useState<string>("Ask Zed");
   const { contractName } = useParams<{ contractName: string }>();
   const frameworks = [
     {
@@ -65,6 +78,30 @@ const ChatWithZed = () => {
   const location = useLocation();
   const decodedURL = decodeURIComponent(location.pathname);
 
+  // Function to handle input change and create chat only if there's no active chat
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setInputValue(e.target.value);
+  }
+
+  // Function to submit prompt and simulate response loading
+  function handleSubmit() {
+    if (!inputValue.trim()) return;
+
+    if (!activeChat) {
+      createChat(inputValue.trim());
+    } else {
+      addMessage(inputValue.trim(), "user");
+    }
+
+    setInputValue("");
+  }
+
+  useEffect(() => {
+    if (activeChat) {
+      console.log("Updated activeChat:", activeChat);
+    }
+  }, [activeChat]);
+
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)]">
       <div className="border-b h-14 px-2 flex justify-between items-center">
@@ -82,7 +119,7 @@ const ChatWithZed = () => {
         <div className="flex items-center text-gray-500 p-2">
           <div
             className={`p-1.5 rounded-md cursor-pointer ${
-              decodedURL === `/contract-dashboard/${contractName}/zed-history`
+              decodedURL === `/contract-dashboard/${contractName}/chat`
                 ? ""
                 : ""
             }`}
@@ -94,15 +131,14 @@ const ChatWithZed = () => {
                   Chat
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56">
+              <DropdownMenuContent className="w-60">
                 <DropdownMenuGroup>
                   <DropdownMenuItem
                     className="cursor-pointer"
                     onClick={() => {
-                      navigate(
-                        `/contract-dashboard/${contractName}/zed-history`
-                      );
-                      setActive("Zed History");
+                      navigate(`/contract-dashboard/${contractName}/chat`);
+                      setActive("Ask Zed");
+                      setActiveChat(null);
                     }}
                   >
                     <Plus /> New Chat
@@ -129,17 +165,32 @@ const ChatWithZed = () => {
                 : ""
             }`}
           >
-            <Button
-              variant="outline"
-              className="h-8 text-xs"
-              onClick={() => {
-                navigate(`/contract-dashboard/${contractName}/zed-activity`);
-                setActive("Zed Activity");
+            <Select
+              onValueChange={(value) => {
+                setSelect(value);
+                navigate(`/contract-dashboard/${contractName}/${value}`);
               }}
             >
-              <Bot size={18} />
-              ZED History
-            </Button>
+              <SelectTrigger className="w-[150px] h-8 px-2">
+                {select === "zed-activity" ? "ZED Activity" : "ZED History"}
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="zed-activity" className="p-0 m-0">
+                    <div className="flex items-center gap-4 p-2">
+                      <Bot size={18} />
+                      <span>ZED Activity</span>
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="zed-history" className="p-0 m-0">
+                    <div className="flex items-center gap-4 p-2">
+                      <History size={16} />
+                      <span>ZED History</span>
+                    </div>
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </div>
@@ -149,13 +200,31 @@ const ChatWithZed = () => {
       </div>
 
       {/* chat-box with zed */}
-      <div className="z-40 w-full bg-white px-2 h-30">
-        <div className="rounded-md my-2">
+      <div className="z-40 w-full bg-white px-2 h-30 py-2">
+        <div className="flex items-center gap-2">
+          <ZedActions triggerButton="Focus On +" />
+          <ZedActions
+            triggerButton={
+              <div className="flex items-center gap-2">
+                Any Relevant Contract <ChevronUp />
+              </div>
+            }
+          />
+        </div>
+        <div className="rounded-md pt-0.5">
           <AnimatedGradientBorderTW className="flex flex-col pb-3">
             <Input
               type="text"
+              value={inputValue}
               placeholder="Message Zed"
               className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+              onChange={handleInputChange}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  handleSubmit();
+                }
+              }}
             />
             <div className="flex items-center justify-between px-3 pt-4">
               <div className="flex items-center gap-2">
@@ -215,6 +284,7 @@ const ChatWithZed = () => {
               <Button
                 variant="default"
                 className="bg-purple-400 hover:bg-purple-700 text-white h-8 px-2.5"
+                onClick={handleSubmit}
               >
                 <ArrowUp />
               </Button>
