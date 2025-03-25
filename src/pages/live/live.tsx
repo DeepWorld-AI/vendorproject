@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronLeft, RotateCw } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { useNavigate } from "react-router";
 
@@ -50,6 +50,10 @@ const tasks = [
   },
 ];
 
+interface getCurrentTimeProps {
+  setActive: React.Dispatch<React.SetStateAction<string>>;
+}
+
 const getCurrentTime = () => {
   return new Date().toLocaleTimeString("en-US", {
     hour: "2-digit",
@@ -58,7 +62,7 @@ const getCurrentTime = () => {
   });
 };
 
-const Live = () => {
+const Live = ({ setActive }: getCurrentTimeProps) => {
   const [showAnalysis, setShowAnalysis] = useState<boolean>(false);
   const [showDetails, setShowDetails] = useState<boolean>(false);
   // const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
@@ -98,7 +102,10 @@ const Live = () => {
         <Button
           variant="ghost"
           className="text-purple-500 font-medium hover:bg-transparent fixed"
-          onClick={() => navigate("/")}
+          onClick={() => {
+            navigate("/playground");
+            setActive("playground");
+          }}
         >
           <ChevronLeft /> Back
         </Button>
