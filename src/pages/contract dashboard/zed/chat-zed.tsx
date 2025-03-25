@@ -48,6 +48,7 @@ const ChatWithZed = () => {
   const { activeChat, createChat, addMessage, setActiveChat } = useChats();
   const [inputValue, setInputValue] = useState<string>("");
   const [select, setSelect] = useState<string>("zed-activity");
+  const [openDropdown, setOpenDropdown] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
   const [active, setActive] = useState<string>("Ask Zed");
@@ -137,7 +138,7 @@ const ChatWithZed = () => {
                 : ""
             }`}
           >
-            <DropdownMenu>
+            <DropdownMenu open={openDropdown} onOpenChange={setOpenDropdown}>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="h-8 border text-xs">
                   <MessagesSquare size={18} />
@@ -165,7 +166,7 @@ const ChatWithZed = () => {
                       <p className="text-sm">Older Conversation</p>
                       <MessageCircleReply size={16} className="text-gray-500" />
                     </div>
-                    <OlderChats />
+                    <OlderChats setOpenDropdown={setOpenDropdown} />
                   </div>
                 </DropdownMenuGroup>
               </DropdownMenuContent>

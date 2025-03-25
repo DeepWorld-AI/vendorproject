@@ -1,9 +1,17 @@
 import { useChats } from "@/hooks/use-chats";
 import { Pin } from "lucide-react";
+import React from "react";
+import { useLocation, useNavigate, useParams } from "react-router";
 
-export default function OlderChats() {
+interface OlderChatsProps {
+  setOpenDropdown: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function OlderChats({ setOpenDropdown }: OlderChatsProps) {
   const { pinnedChats, chats, selectChat, togglePinChat } = useChats();
-  console.log(chats);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { contractName } = useParams<{ contractName: string }>();
 
   return (
     <div className="mt-4">
@@ -21,9 +29,15 @@ export default function OlderChats() {
                 <li
                   key={chat.id}
                   className="text-sm flex justify-between items-center"
-                  onClick={() => selectChat(chat.id)}
+                  onClick={() => {
+                    if (!location.pathname.includes("chat")) {
+                      navigate(`/contract-dashboard/${contractName}/chat`);
+                    }
+                    selectChat(chat.id);
+                    setOpenDropdown(false);
+                  }}
                 >
-                  <p className="truncate hover:bg-gray-100 cursor-pointer rounded-md p-2 flex-1">
+                  <p className="truncate hover:bg-gray-100 cursor-pointer rounded-md py-1 px-2 flex-1">
                     {chat.title || chat.messages[0]?.text || "Untitled Chat"}
                   </p>
                   <Pin

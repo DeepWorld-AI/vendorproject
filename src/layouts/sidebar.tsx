@@ -17,7 +17,6 @@ import ZedActivity from "@/pages/contract dashboard/zed/zed-activity";
 import { Input } from "@/components/ui/input";
 import {
   CircleAlert,
-  CircleCheck,
   CircleUserRound,
   Mail,
   MoreHorizontal,
@@ -140,9 +139,6 @@ export default function Sidebar() {
             <div className="flex items-center gap-4">
               <Input className="w-[400px] h-9" placeholder="search.." />
               <Separator orientation="vertical" className="h-4" />
-              <CircleCheck size={18} className="cursor-pointer" />
-              <Separator orientation="vertical" className="h-4" />
-
               <Sheet>
                 <SheetTrigger asChild>
                   <Mail size={18} className="cursor-pointer" />

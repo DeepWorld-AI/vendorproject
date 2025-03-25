@@ -10,7 +10,7 @@ const PinnedContracts = () => {
             <CardContent className="p-2 flex flex-col gap-2">
               <div className="flex justify-between items-center text-gray-400">
                 <span className="text-gray-500">{item.icon}</span>
-                <Pin className="w-4 h-4 cursor-pointer hover:text-gray-600" />
+                <Pin className="w-4 h-4 cursor-pointer hover:text-gray-600 rotate-45" />
               </div>
               <div className="mt-4 space-y-1">
                 <p className="font-semibold text-sm leading-tight">
