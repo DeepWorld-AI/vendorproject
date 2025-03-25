@@ -1,12 +1,18 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { pinnedContracts } from "@/json data/contracts";
 import { Pin } from "lucide-react";
+import { useNavigate } from "react-router";
 const PinnedContracts = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="grid grid-cols-5 gap-4">
         {pinnedContracts.map((item, i) => (
-          <Card key={i} className="relative rounded-lg border p-0 shadow-sm">
+          <Card
+            key={i}
+            className="relative rounded-lg border p-0 shadow-sm cursor-pointer hover:border hover:border-gray-500 hover:bg-gray-50"
+            onClick={() => navigate(`/contract-dashboard/${item.title}`)}
+          >
             <CardContent className="p-2 flex flex-col gap-2">
               <div className="flex justify-between items-center text-gray-400">
                 <span className="text-gray-500">{item.icon}</span>

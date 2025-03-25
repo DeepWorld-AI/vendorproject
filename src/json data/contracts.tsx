@@ -618,7 +618,7 @@ export const contracts = [
 export const pinnedContracts = [
   {
     icon: <FileText className="w-8 h-8 text-gray-500" />,
-    title: "Acme Corp – NDA – 2025",
+    title: "Software Service (SaaS) Agreements",
     subtitle: "Client Agreements",
     labels: [
       { text: "Client Agreements", color: "bg-orange-200 text-orange-700" },
@@ -627,7 +627,7 @@ export const pinnedContracts = [
   },
   {
     icon: <FileText className="w-8 h-8 text-gray-500" />,
-    title: "GlobalTech – Software Procurement – Q1 2025",
+    title: "Dealer Portal Development Agreement",
     subtitle: "EU Compliance",
     labels: [
       { text: "EU Compliance", color: "bg-green-200 text-green-700" },
@@ -636,7 +636,7 @@ export const pinnedContracts = [
   },
   {
     icon: <Tag className="w-8 h-8 text-gray-500" />,
-    title: "Strategic Vendors",
+    title: "Software Development Agreements",
     subtitle: "21 Contracts",
     labels: [],
   },

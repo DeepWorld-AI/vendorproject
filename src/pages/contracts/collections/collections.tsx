@@ -1,7 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { collections } from "@/json data/contracts";
+import { useNavigate } from "react-router";
 
 const Collections = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="grid grid-cols-5 gap-4">
@@ -9,6 +11,9 @@ const Collections = () => {
           <Card
             key={i}
             className="relative rounded-lg border p-0 shadow-sm hover:border-gray-400 hover:bg-gray-50 cursor-pointer"
+            onClick={() =>
+              navigate(`/single-collection-contracts/${item.title}`)
+            }
           >
             <CardContent className="p-2 flex flex-col gap-2">
               <div className="flex justify-between items-center text-gray-400">
