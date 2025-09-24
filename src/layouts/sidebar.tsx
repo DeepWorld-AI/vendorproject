@@ -73,7 +73,7 @@ export default function Sidebar() {
             className={`flex justify-between sticky top-0 h-16 z-50 shrink-0 items-center border-b px-4 transition duration-300
               ${isBlurred ? "bg-white/60 backdrop-blur-md" : "bg-white"}`}
           >
-            {location.pathname !== "/agent-response" &&
+            {
               location.pathname !== "/" && (
                 <div className="flex items-center gap-2">
                   <SidebarTrigger className="-ml-1" />
